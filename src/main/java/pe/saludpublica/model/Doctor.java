@@ -25,6 +25,12 @@ public class Doctor {
             );
         }
 
+        if (apellidos == null) {
+            throw new IllegalArgumentException(
+                    "Los apellidos del doctor son obligatorios"
+            );
+        }
+
 
 
         this.documento = documento;
