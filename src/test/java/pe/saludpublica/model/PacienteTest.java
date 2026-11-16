@@ -28,4 +28,22 @@ public class PacienteTest {
         assertEquals("987654321", paciente.getTelefono());
         assertEquals("ana@mail.com", paciente.getCorreo());
     }
+
+
+    @Test
+    @DisplayName("PAC-002: Rechazar paciente sin documento")
+    void shouldRejectPatientWithoutDocument() {
+
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new Paciente(
+                        null,
+                        "Ana",
+                        "Pérez",
+                        "987654321",
+                        "ana@mail.com"
+                )
+        );
+    }
+
 }
