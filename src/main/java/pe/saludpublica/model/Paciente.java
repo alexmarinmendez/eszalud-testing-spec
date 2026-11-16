@@ -1,12 +1,24 @@
 package pe.saludpublica.model;
 
 public class Paciente {
-    public Paciente(String documento, String nombres, String apellidos,
-                    String telefono, String correo) { }
+    private final String documento;
+    private final String nombres;
+    private final String apellidos;
+    private final String telefono;
+    private final String correo;
 
-    public String getDocumento() { return null; }
-    public String getNombres()   { return null; }
-    public String getApellidos() { return null; }
-    public String getTelefono()  { return null; }
-    public String getCorreo()    { return null; }
+    public Paciente(String documento, String nombres, String apellidos,
+                    String telefono, String correo) {
+        this.documento = documento;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.telefono = telefono;
+        this.correo = correo;
+    }
+
+    public String getDocumento() { return documento; }
+    public String getNombres()   { return nombres; }
+    public String getApellidos() { return apellidos; }
+    public String getTelefono()  { return telefono; }
+    public String getCorreo()    { return correo; }
 }
