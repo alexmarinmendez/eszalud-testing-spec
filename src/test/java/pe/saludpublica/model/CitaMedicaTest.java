@@ -67,4 +67,20 @@ public class CitaMedicaTest {
                 )
         );
     }
+    @Test
+    @DisplayName("Rechazar la creación de una cita sin identificador de especialidad")
+    void shouldRejectAppointmentWithoutSpecialty() {
+
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new CitaMedica(
+                        "PAC-001",
+                        "DOC-001",
+                        null,
+                        LocalDateTime.of(2026, 12, 1, 9, 30),
+                        "Control de rutina",
+                        EstadoCita.PROGRAMADA
+                )
+        );
+    }
 }
