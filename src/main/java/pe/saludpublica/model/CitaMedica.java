@@ -15,7 +15,7 @@ public class CitaMedica {
                       LocalDateTime fechaHora, String motivo, EstadoCita estado) {
         this.paciente = requerido(paciente, "El paciente de la cita es obligatorio");
         this.doctor = requerido(doctor, "El doctor de la cita es obligatorio");
-        this.especialidad = especialidad;
+        this.especialidad = requerido(especialidad, "La especialidad de la cita es obligatoria");
         this.fechaHora = fechaHora;
         this.motivo = motivo;
         this.estado = estado;
