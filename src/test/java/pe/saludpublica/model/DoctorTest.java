@@ -103,5 +103,5 @@ public class DoctorTest {
         assertEquals("Torres", doctor.getApellidos());
         assertEquals("56789", doctor.getColegiatura());
         assertEquals("ESP-002", doctor.getEspecialidad());
-    }   
+    }
 }
