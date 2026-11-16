@@ -24,4 +24,19 @@ public class EspecialidadTest {
                 especialidad.getDescripcion()
         );
     }
+
+
+    @Test
+    @DisplayName("ESP-002: Rechazar especialidad sin nombre")
+    void shouldRejectSpecialtyWithoutName() {
+
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new Especialidad(
+                        null,
+                        "Atención de enfermedades del corazón"
+                )
+        );
+    }
+
 }
