@@ -22,4 +22,16 @@ class PacienteTest {
         assertEquals("942270712", paciente.getTelefono());
         assertEquals("alexmarinmendez@gmail.com", paciente.getCorreo());
     }
+
+    @Test
+    void shouldThrowExceptionWhenDniIsNull() {
+        assertThrows(IllegalArgumentException.class, () -> new Paciente(
+                null,
+                "Alex Américo",
+                "Marín Méndez",
+                "942270712",
+                "alexmarinmendez@gmail.com"
+        ));
+    }
+
 }
