@@ -24,6 +24,13 @@ public class Paciente {
             );
         }
 
+        if (apellidos == null) {
+            throw new IllegalArgumentException(
+                    "Los apellidos del paciente son obligatorios"
+            );
+        }
+
+
 
         this.documento = documento;
         this.nombres = nombres;
