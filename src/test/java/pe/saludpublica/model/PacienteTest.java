@@ -62,5 +62,21 @@ public class PacienteTest {
         );
     }
 
+    @Test
+    @DisplayName("PAC-004: Rechazar paciente sin apellidos")
+    void shouldRejectPatientWithoutLastNames() {
+
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new Paciente(
+                        "12345678",
+                        "Ana",
+                        null,
+                        "987654321",
+                        "ana@mail.com"
+                )
+        );
+    }
+
 
 }
