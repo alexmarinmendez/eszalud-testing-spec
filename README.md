@@ -150,3 +150,18 @@ Este documento contiene los casos de prueba, los criterios de aceptación y las 
 ---
 
 **EsZalud – Aplicación de referencia para el desarrollo de pruebas unitarias mediante TDD.**
+
+
+## Decisiones de negocio
+
+### CIT-006: Estado de una cita médica
+
+Cuando se crea una cita médica con estado null,
+el sistema asigna automáticamente EstadoCita.PROGRAMADA.
+
+Si se proporciona un estado válido, se conserva el
+valor recibido.
+
+Esta regla se establece para cumplir el caso CIT-006
+de la especificación de pruebas unitarias.
+
