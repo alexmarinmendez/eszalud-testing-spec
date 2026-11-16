@@ -18,7 +18,7 @@ public class CitaMedica {
         this.especialidad = requerido(especialidad, "La especialidad de la cita es obligatoria");
         this.fechaHora = requerido(fechaHora, "La fecha y hora de la cita son obligatorias");
         this.motivo = motivo;
-        this.estado = estado;
+        this.estado = (estado == null) ? EstadoCita.PROGRAMADA : estado;
     }
 
     private static <T> T requerido(T valor, String mensaje) {
