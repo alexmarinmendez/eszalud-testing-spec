@@ -34,6 +34,13 @@ public class CitaMedica {
             );
         }
 
+        if (fechaHora == null) {
+            throw new IllegalArgumentException(
+                    "La fecha y hora de la cita son obligatorias"
+            );
+        }
+
+
 
 
         this.paciente = paciente;
