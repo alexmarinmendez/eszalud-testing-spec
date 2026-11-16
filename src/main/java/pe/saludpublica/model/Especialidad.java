@@ -7,14 +7,15 @@ public class Especialidad {
     private String descripcion;
 
     public Especialidad(String nombre, String descripcion) {
-        // Pendiente de implementar
+        this.nombre = nombre;
+        this.descripcion = descripcion;
     }
 
     public String getNombre() {
-        return null;
+        return nombre;
     }
 
     public String getDescripcion() {
-        return null;
+        return descripcion;
     }
 }
