@@ -10,7 +10,7 @@ public class Doctor {
     public Doctor(String documento, String nombres, String apellidos,
                   String colegiatura, String especialidad) {
         this.documento = requerido(documento, "El documento del doctor es obligatorio");
-        this.nombres = nombres;
+        this.nombres = requerido(nombres, "Los nombres del doctor son obligatorios");
         this.apellidos = apellidos;
         this.colegiatura = colegiatura;
         this.especialidad = especialidad;
