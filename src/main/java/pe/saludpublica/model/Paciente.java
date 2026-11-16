@@ -9,6 +9,11 @@ public class Paciente {
 
     public Paciente(String documento, String nombres, String apellidos,
                     String telefono, String correo) {
+
+        if (documento == null) {
+            throw new IllegalArgumentException("El documento es obligatorio");
+        }
+
         this.documento = documento;
         this.nombres = nombres;
         this.apellidos = apellidos;
@@ -21,4 +26,7 @@ public class Paciente {
     public String getApellidos() { return apellidos; }
     public String getTelefono()  { return telefono; }
     public String getCorreo()    { return correo; }
+
+
+
 }
