@@ -65,4 +65,22 @@ class DoctorTest {
         );
     }
 
+    @Test
+    @DisplayName("Conservar los valores de los atributos del doctor")
+    void shouldKeepDoctorAttributeValues() {
+        Doctor d = new Doctor(
+                "87654321",
+                "Carlos",
+                "Gómez",
+                "CMP12345",
+                "Cardiología"
+        );
+
+        assertEquals("87654321", d.getDocumento());
+        assertEquals("Carlos", d.getNombres());
+        assertEquals("Gómez", d.getApellidos());
+        assertEquals("CMP12345", d.getColegiatura());
+        assertEquals("Cardiología", d.getEspecialidad());
+    }
+
 }
