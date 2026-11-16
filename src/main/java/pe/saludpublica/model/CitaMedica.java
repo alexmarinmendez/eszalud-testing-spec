@@ -30,14 +30,15 @@ public class CitaMedica {
         if (fechaHora == null) {
             throw new IllegalArgumentException("La fecha y hora son obligatorias");
         }
+        this.motivo = motivo;
+        this.estado = (estado == null) ? EstadoCita.PROGRAMADA : estado;
 
 
         this.paciente = paciente;
         this.doctor = doctor;
         this.especialidad = especialidad;
         this.fechaHora = fechaHora;
-        this.motivo = motivo;
-        this.estado = estado;
+
     }
 
     public String getPaciente()         { return paciente; }
