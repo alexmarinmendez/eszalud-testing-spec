@@ -12,26 +12,31 @@ public class Doctor {
     public Doctor(String documento, String nombres,
                   String apellidos, String colegiatura,
                   String especialidad) {
-        // Pendiente de implementar para GREEN
+
+        this.documento = documento;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.colegiatura = colegiatura;
+        this.especialidad = especialidad;
     }
 
     public String getDocumento() {
-        return null;
+        return documento;
     }
 
     public String getNombres() {
-        return null;
+        return nombres;
     }
 
     public String getApellidos() {
-        return null;
+        return apellidos;
     }
 
     public String getColegiatura() {
-        return null;
+        return colegiatura;
     }
 
     public String getEspecialidad() {
-        return null;
+        return especialidad;
     }
 }
