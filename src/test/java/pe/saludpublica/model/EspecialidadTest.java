@@ -18,4 +18,13 @@ class EspecialidadTest {
         assertNotNull(esp);
         assertEquals("Cardiología", esp.getNombre());
     }
+
+
+    @Test
+    @DisplayName("Rechazar especialidad sin nombre")
+    void shouldRejectSpecialtyWithoutName() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Especialidad(null, "Descripción genérica")
+        );
+    }
 }
