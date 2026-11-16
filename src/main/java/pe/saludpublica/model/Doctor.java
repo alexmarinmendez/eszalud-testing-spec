@@ -11,7 +11,7 @@ public class Doctor {
                   String colegiatura, String especialidad) {
         this.documento = requerido(documento, "El documento del doctor es obligatorio");
         this.nombres = requerido(nombres, "Los nombres del doctor son obligatorios");
-        this.apellidos = apellidos;
+        this.apellidos = requerido(apellidos, "Los apellidos del doctor son obligatorios");
         this.colegiatura = colegiatura;
         this.especialidad = especialidad;
     }
