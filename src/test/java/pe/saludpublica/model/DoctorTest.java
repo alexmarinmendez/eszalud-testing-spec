@@ -27,4 +27,22 @@ public class DoctorTest {
         assertEquals("CMP12345", doctor.getColegiatura());
         assertEquals("CARDIOLOGIA", doctor.getEspecialidad());
     }
+
+
+    @Test
+    @DisplayName("DOC-002: Rechazar doctor sin documento")
+    void shouldRejectDoctorWithoutDocument() {
+
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new Doctor(
+                        null,
+                        "Carlos",
+                        "Ramírez",
+                        "CMP12345",
+                        "CARDIOLOGIA"
+                )
+        );
+    }
+
 }
