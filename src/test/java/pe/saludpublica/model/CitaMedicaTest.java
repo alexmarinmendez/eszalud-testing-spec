@@ -67,4 +67,14 @@ class CitaMedicaTest {
         );
         assertEquals(EstadoCita.PROGRAMADA, cita.getEstado());
     }
+
+    @Test
+    @DisplayName("Mantener el estado proporcionado si no es nulo")
+    void shouldKeepProvidedStatus() {
+        LocalDateTime fecha = LocalDateTime.of(2026, 12, 1, 9, 30);
+        CitaMedica cita = new CitaMedica(
+                "pac1", "doc1", "esp1", fecha, "Control", EstadoCita.ATENDIDA
+        );
+        assertEquals(EstadoCita.ATENDIDA, cita.getEstado());
+    }
 }
