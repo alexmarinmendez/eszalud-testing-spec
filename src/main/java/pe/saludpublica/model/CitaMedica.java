@@ -16,7 +16,7 @@ public class CitaMedica {
         this.paciente = requerido(paciente, "El paciente de la cita es obligatorio");
         this.doctor = requerido(doctor, "El doctor de la cita es obligatorio");
         this.especialidad = requerido(especialidad, "La especialidad de la cita es obligatoria");
-        this.fechaHora = fechaHora;
+        this.fechaHora = requerido(fechaHora, "La fecha y hora de la cita son obligatorias");
         this.motivo = motivo;
         this.estado = estado;
     }
