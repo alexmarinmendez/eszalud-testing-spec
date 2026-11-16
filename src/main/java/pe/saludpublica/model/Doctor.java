@@ -19,6 +19,13 @@ public class Doctor {
             );
         }
 
+        if (nombres == null) {
+            throw new IllegalArgumentException(
+                    "Los nombres del doctor son obligatorios"
+            );
+        }
+
+
 
         this.documento = documento;
         this.nombres = nombres;
