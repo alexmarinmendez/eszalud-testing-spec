@@ -12,7 +12,7 @@ public class Doctor {
         this.documento = requerido(documento, "El documento del doctor es obligatorio");
         this.nombres = requerido(nombres, "Los nombres del doctor son obligatorios");
         this.apellidos = requerido(apellidos, "Los apellidos del doctor son obligatorios");
-        this.colegiatura = colegiatura;
+        this.colegiatura = requerido(colegiatura, "La colegiatura del doctor es obligatoria");
         this.especialidad = especialidad;
     }
 
