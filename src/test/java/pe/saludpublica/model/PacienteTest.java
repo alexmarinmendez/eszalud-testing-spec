@@ -3,8 +3,10 @@ package pe.saludpublica.model;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PacienteTest {
@@ -62,5 +64,25 @@ public class PacienteTest {
                 "987654321",
                 "ana.garcia@correo.com"
         ));
+    }
+
+    @Test
+    @DisplayName("Debe devolver todos los atributos asignados mediante sus getters tras construir el paciente")
+    void shouldReturnAssignedAttributesAfterPatientConstruction() {
+        Paciente paciente = new Paciente(
+                "87654321",
+                "Carlos",
+                "Mendoza",
+                null,
+                null
+        );
+
+        assertAll(
+                () -> assertEquals("87654321", paciente.getDocumento()),
+                () -> assertEquals("Carlos", paciente.getNombres()),
+                () -> assertEquals("Mendoza", paciente.getApellidos()),
+                () -> assertNull(paciente.getTelefono()),
+                () -> assertNull(paciente.getCorreo())
+        );
     }
 }
