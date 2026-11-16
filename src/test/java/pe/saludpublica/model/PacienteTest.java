@@ -72,5 +72,5 @@ class PacienteTest {
         assertEquals("ana@mail.com", p.getCorreo());
     }
 
-    
+
 }
