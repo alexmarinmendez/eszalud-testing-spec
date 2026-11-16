@@ -23,4 +23,13 @@ class CitaMedicaTest {
         assertNotNull(cita);
         assertEquals("pac1", cita.getPaciente());
     }
+
+    @Test
+    @DisplayName("Rechazar cita sin paciente")
+    void shouldRejectAppointmentWithoutPatient() {
+        LocalDateTime fecha = LocalDateTime.of(2026, 12, 1, 9, 30);
+        assertThrows(IllegalArgumentException.class,
+                () -> new CitaMedica(null, "doc1", "esp1", fecha, "Control", EstadoCita.PROGRAMADA)
+        );
+    }
 }
