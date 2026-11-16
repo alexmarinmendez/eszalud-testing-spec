@@ -20,4 +20,15 @@ class DoctorTest {
         assertNotNull(d);
         assertEquals("87654321", d.getDocumento());
     }
+
+    @Test
+    @DisplayName("Rechazar doctor sin documento")
+    void shouldRejectDoctorWithoutDocument() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Doctor(
+                        null, "Carlos", "Gómez",
+                        "CMP12345", "Cardiología"
+                )
+        );
+    }
 }
