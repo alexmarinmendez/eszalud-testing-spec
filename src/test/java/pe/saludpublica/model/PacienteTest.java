@@ -53,4 +53,24 @@ class PacienteTest {
                 )
         );
     }
+
+    @Test
+    @DisplayName("Conservar los valores de los atributos después de la construcción")
+    void shouldKeepAttributeValuesAfterConstruction() {
+        Paciente p = new Paciente(
+                "12345678",
+                "Ana",
+                "Pérez",
+                "987654321",
+                "ana@mail.com"
+        );
+
+        assertEquals("12345678", p.getDocumento());
+        assertEquals("Ana", p.getNombres());
+        assertEquals("Pérez", p.getApellidos());
+        assertEquals("987654321", p.getTelefono());
+        assertEquals("ana@mail.com", p.getCorreo());
+    }
+
+    
 }
