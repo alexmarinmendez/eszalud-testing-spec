@@ -39,4 +39,16 @@ public class PacienteTest {
                 "ana.garcia@correo.com"
         ));
     }
+
+    @Test
+    @DisplayName("Debe lanzar IllegalArgumentException cuando los nombres son nulos")
+    void shouldRejectPatientWhenFirstNameIsNull() {
+        assertThrows(IllegalArgumentException.class, () -> new Paciente(
+                "12345678",
+                null,
+                "García",
+                "987654321",
+                "ana.garcia@correo.com"
+        ));
+    }
 }
