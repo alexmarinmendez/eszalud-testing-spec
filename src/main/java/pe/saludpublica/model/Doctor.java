@@ -31,6 +31,12 @@ public class Doctor {
             );
         }
 
+        if (colegiatura == null) {
+            throw new IllegalArgumentException(
+                    "La colegiatura del doctor es obligatoria"
+            );
+        }
+
 
 
         this.documento = documento;
