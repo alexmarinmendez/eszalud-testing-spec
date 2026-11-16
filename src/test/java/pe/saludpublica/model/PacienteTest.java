@@ -69,6 +69,24 @@ class PacienteTest {
                         "ana@mail.com"
                 )
         );
-        
+
+    }
+
+    @Test
+    @DisplayName("Verificar los atributos después de construir el objeto")
+    void shouldVerifyAttributesAfterConstruction() {
+        Paciente paciente = new Paciente(
+                "87654321",
+                "Carlos",
+                "Gómez",
+                "912345678",
+                "carlos@mail.com"
+        );
+
+        assertEquals("87654321", paciente.getDocumento());
+        assertEquals("Carlos", paciente.getNombres());
+        assertEquals("Gómez", paciente.getApellidos());
+        assertEquals("912345678", paciente.getTelefono());
+        assertEquals("carlos@mail.com", paciente.getCorreo());
     }
 }
