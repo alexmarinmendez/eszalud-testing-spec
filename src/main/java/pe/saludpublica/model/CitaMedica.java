@@ -13,12 +13,19 @@ public class CitaMedica {
 
     public CitaMedica(String paciente, String doctor, String especialidad,
                       LocalDateTime fechaHora, String motivo, EstadoCita estado) {
-        this.paciente = paciente;
+        this.paciente = requerido(paciente, "El paciente de la cita es obligatorio");
         this.doctor = doctor;
         this.especialidad = especialidad;
         this.fechaHora = fechaHora;
         this.motivo = motivo;
         this.estado = estado;
+    }
+
+    private static <T> T requerido(T valor, String mensaje) {
+        if (valor == null) {
+            throw new IllegalArgumentException(mensaje);
+        }
+        return valor;
     }
 
     public String getPaciente() {
