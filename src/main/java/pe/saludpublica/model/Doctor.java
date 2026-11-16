@@ -9,11 +9,18 @@ public class Doctor {
 
     public Doctor(String documento, String nombres, String apellidos,
                   String colegiatura, String especialidad) {
-        this.documento = documento;
+        this.documento = requerido(documento, "El documento del doctor es obligatorio");
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.colegiatura = colegiatura;
         this.especialidad = especialidad;
+    }
+
+    private static String requerido(String valor, String mensaje) {
+        if (valor == null) {
+            throw new IllegalArgumentException(mensaje);
+        }
+        return valor;
     }
 
     public String getDocumento() {
