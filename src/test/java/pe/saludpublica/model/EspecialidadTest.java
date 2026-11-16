@@ -27,4 +27,16 @@ class EspecialidadTest {
                 () -> new Especialidad(null, "Descripción genérica")
         );
     }
+
+    @Test
+    @DisplayName("Conservar los valores de los atributos de la especialidad")
+    void shouldKeepSpecialtyAttributeValues() {
+        Especialidad esp = new Especialidad(
+                "Pediatría",
+                "Atención infantil"
+        );
+
+        assertEquals("Pediatría", esp.getNombre());
+        assertEquals("Atención infantil", esp.getDescripcion());
+    }
 }
