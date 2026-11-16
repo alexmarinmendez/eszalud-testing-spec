@@ -25,10 +25,7 @@ class EspecialidadTest {
     void shouldRejectSpecialtyWithoutName() {
         assertThrows(
                 IllegalArgumentException.class,
-                () -> new Especialidad(
-                        null,
-                        "Descripción de prueba"
-                )
+                () -> new Especialidad(null, "Descripción de prueba")
         );
     }
 }

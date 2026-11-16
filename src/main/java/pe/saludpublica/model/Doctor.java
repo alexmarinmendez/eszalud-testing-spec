@@ -11,6 +11,15 @@ public class Doctor {
         if (documento == null || documento.trim().isEmpty()) {
             throw new IllegalArgumentException("El documento no puede ser nulo o vacío");
         }
+        if (nombres == null || nombres.trim().isEmpty()) {
+            throw new IllegalArgumentException("Los nombres no pueden ser nulos o vacíos");
+        }
+        if (apellidos == null || apellidos.trim().isEmpty()) {
+            throw new IllegalArgumentException("Los apellidos no pueden ser nulos o vacíos");
+        }
+        if (colegiatura == null || colegiatura.trim().isEmpty()) {
+            throw new IllegalArgumentException("La colegiatura no puede ser nula o vacía");
+        }
         this.documento = documento;
         this.nombres = nombres;
         this.apellidos = apellidos;

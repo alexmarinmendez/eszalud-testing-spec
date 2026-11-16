@@ -36,14 +36,48 @@ class CitaMedicaTest {
     void shouldRejectAppointmentWithoutPatient() {
         assertThrows(
                 IllegalArgumentException.class,
-                () -> new CitaMedica(
-                        null,
-                        "DOC-01",
-                        "ESP-01",
-                        LocalDateTime.now().plusDays(1),
-                        "Motivo",
-                        EstadoCita.PROGRAMADA
-                )
+                () -> new CitaMedica(null, "DOC-01", "ESP-01", LocalDateTime.now().plusDays(1), "Motivo", EstadoCita.PROGRAMADA)
         );
+    }
+
+    @Test
+    @DisplayName("Rechazar cita sin identificador de doctor")
+    void shouldRejectAppointmentWithoutDoctor() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new CitaMedica("PAC-01", null, "ESP-01", LocalDateTime.now().plusDays(1), "Motivo", EstadoCita.PROGRAMADA)
+        );
+    }
+
+    @Test
+    @DisplayName("Rechazar cita sin identificador de especialidad")
+    void shouldRejectAppointmentWithoutSpecialty() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new CitaMedica("PAC-01", "DOC-01", null, LocalDateTime.now().plusDays(1), "Motivo", EstadoCita.PROGRAMADA)
+        );
+    }
+
+    @Test
+    @DisplayName("Rechazar cita sin fecha y hora")
+    void shouldRejectAppointmentWithoutDateTime() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new CitaMedica("PAC-01", "DOC-01", "ESP-01", null, "Motivo", EstadoCita.PROGRAMADA)
+        );
+    }
+
+    @Test
+    @DisplayName("Crear cita con estado null aplica estado PROGRAMADA por defecto")
+    void shouldAssignDefaultStatusWhenStatusIsNull() {
+        CitaMedica cita = new CitaMedica("PAC-01", "DOC-01", "ESP-01", LocalDateTime.now().plusDays(1), "Motivo", null);
+        assertEquals(EstadoCita.PROGRAMADA, cita.getEstado());
+    }
+
+    @Test
+    @DisplayName("Crear cita con un estado válido conserva dicho estado")
+    void shouldKeepValidStatusWhenProvided() {
+        CitaMedica citaAtendida = new CitaMedica("PAC-01", "DOC-01", "ESP-01", LocalDateTime.now().plusDays(1), "Motivo", EstadoCita.ATENDIDA);
+        assertEquals(EstadoCita.ATENDIDA, citaAtendida.getEstado());
     }
 }
