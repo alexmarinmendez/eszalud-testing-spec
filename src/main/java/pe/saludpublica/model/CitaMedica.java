@@ -22,6 +22,13 @@ public class CitaMedica {
             );
         }
 
+        if (doctor == null) {
+            throw new IllegalArgumentException(
+                    "El doctor de la cita es obligatorio"
+            );
+        }
+
+
 
         this.paciente = paciente;
         this.doctor = doctor;
