@@ -28,6 +28,12 @@ public class CitaMedica {
             );
         }
 
+        if (especialidad == null) {
+            throw new IllegalArgumentException(
+                    "La especialidad de la cita es obligatoria"
+            );
+        }
+
 
 
         this.paciente = paciente;
