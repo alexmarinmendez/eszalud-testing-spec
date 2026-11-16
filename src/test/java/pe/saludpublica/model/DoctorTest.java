@@ -1,0 +1,86 @@
+package pe.saludpublica.model;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class DoctorTest {
+
+    @Test
+    @DisplayName("Crear un doctor con datos válidos")
+    void shouldCreateDoctorWithValidData() {
+        Doctor d = new Doctor(
+                "87654321",
+                "Carlos",
+                "Gómez",
+                "CMP12345",
+                "Cardiología"
+        );
+
+        assertNotNull(d);
+        assertEquals("87654321", d.getDocumento());
+    }
+
+    @Test
+    @DisplayName("Rechazar doctor sin documento")
+    void shouldRejectDoctorWithoutDocument() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Doctor(
+                        null, "Carlos", "Gómez",
+                        "CMP12345", "Cardiología"
+                )
+        );
+    }
+
+
+    @Test
+    @DisplayName("Rechazar doctor sin nombres")
+    void shouldRejectDoctorWithoutFirstName() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Doctor(
+                        "87654321", null, "Gómez",
+                        "CMP12345", "Cardiología"
+                )
+        );
+    }
+
+    @Test
+    @DisplayName("Rechazar doctor sin apellidos")
+    void shouldRejectDoctorWithoutLastName() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Doctor(
+                        "87654321", "Carlos", null,
+                        "CMP12345", "Cardiología"
+                )
+        );
+    }
+    @Test
+    @DisplayName("Rechazar doctor sin colegiatura")
+    void shouldRejectDoctorWithoutLicense() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Doctor(
+                        "87654321", "Carlos", "Gómez",
+                        null, "Cardiología"
+                )
+        );
+    }
+
+    @Test
+    @DisplayName("Conservar los valores de los atributos del doctor")
+    void shouldKeepDoctorAttributeValues() {
+        Doctor d = new Doctor(
+                "87654321",
+                "Carlos",
+                "Gómez",
+                "CMP12345",
+                "Cardiología"
+        );
+
+        assertEquals("87654321", d.getDocumento());
+        assertEquals("Carlos", d.getNombres());
+        assertEquals("Gómez", d.getApellidos());
+        assertEquals("CMP12345", d.getColegiatura());
+        assertEquals("Cardiología", d.getEspecialidad());
+    }
+
+}
