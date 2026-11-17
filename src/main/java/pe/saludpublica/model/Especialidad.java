@@ -9,8 +9,8 @@ public class Especialidad {
         if (nombre == null) {
             throw new IllegalArgumentException("El nombre de la especialidad no puede ser nulo");
         }
-        this.nombre = nombre;
-        this.descripcion = descripcion;
+        this.nombre = nombre.trim();
+        this.descripcion = descripcion != null ? descripcion.trim() : null;
     }
 
     public String getNombre() {
