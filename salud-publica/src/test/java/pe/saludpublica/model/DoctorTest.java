@@ -32,10 +32,10 @@ public class DoctorTest {
         assertThrows(
                 IllegalArgumentException.class,
                 () -> new Doctor(
-                        null,
+                        "87654321",
                         "Carlos",
                         "Ramírez",
-                        "CMP-12345",
+                        null,
                         "Cardiología"
                 )
         );
