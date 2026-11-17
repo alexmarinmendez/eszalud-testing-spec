@@ -9,17 +9,18 @@ public class Doctor {
     private final String especialidad;
 
     public Doctor(String documento, String nombres, String apellidos, String colegiatura, String especialidad) {
-        if (documento == null) {
-            throw new IllegalArgumentException("El documento del doctor no puede ser nulo");
-        }
-        if (nombres == null) {
-            throw new IllegalArgumentException("Los nombres del doctor no pueden ser nulos");
-        }
-        this.documento = documento;
-        this.nombres = nombres;
+        this.documento = requireNonNullField(documento, "El documento del doctor no puede ser nulo");
+        this.nombres = requireNonNullField(nombres, "Los nombres del doctor no pueden ser nulos");
         this.apellidos = apellidos;
         this.colegiatura = colegiatura;
         this.especialidad = especialidad;
+    }
+
+    private String requireNonNullField(String value, String errorMessage) {
+        if (value == null) {
+            throw new IllegalArgumentException(errorMessage);
+        }
+        return value;
     }
 
     public String getDocumento() {
