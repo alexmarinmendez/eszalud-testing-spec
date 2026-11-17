@@ -50,4 +50,9 @@ public class CitaMedica {
     public EstadoCita getEstado() {
         return estado;
     }
+
+    public boolean isAtendida() {
+        return false;
+    }
+
 }

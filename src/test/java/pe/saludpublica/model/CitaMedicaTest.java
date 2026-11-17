@@ -105,6 +105,38 @@ class CitaMedicaTest {
         assertEquals(EstadoCita.PROGRAMADA, cita.getEstado());
     }
 
+    @Test
+    @DisplayName("Conservar correctamente un estado válido recibido al crear la cita")
+    void shouldPreserveValidAppointmentStatus() {
+        LocalDateTime fechaHora = LocalDateTime.of(2026, 10, 28, 11, 35);
+
+        CitaMedica citaAtendida = new CitaMedica(
+                "6af71f49501cca046a16604a",
+                "6af730a190f1d08b4673bfa7",
+                "6af71da3501cca046a166045",
+                fechaHora,
+                "Control posterior a consulta de emergencia",
+                EstadoCita.ATENDIDA
+        );
+
+        CitaMedica citaCancelada = new CitaMedica(
+                "6af71f49501cca046a16604a",
+                "6af730a190f1d08b4673bfa7",
+                "6af71da3501cca046a166045",
+                fechaHora,
+                "Control posterior a consulta de emergencia",
+                EstadoCita.CANCELADA
+        );
+
+        assertAll(
+                () -> assertEquals(EstadoCita.ATENDIDA, citaAtendida.getEstado()),
+                () -> assertTrue(citaAtendida.isAtendida()),
+                () -> assertEquals(EstadoCita.CANCELADA, citaCancelada.getEstado()),
+                () -> assertFalse(citaCancelada.isAtendida())
+        );
+    }
+
+
 
 
 
