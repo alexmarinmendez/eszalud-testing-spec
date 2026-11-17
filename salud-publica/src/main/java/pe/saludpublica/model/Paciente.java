@@ -10,8 +10,8 @@ public class Paciente {
 
     public Paciente(String documento, String nombres, String apellidos, String telefono, String correo) {
         this.documento = validateRequiredText(documento, "El documento es obligatorio");
-        this.nombres = validateRequiredText(nombres, "El documento es obligatorio");;
-        this.apellidos = apellidos;
+        this.nombres = validateRequiredText(nombres, "Los nombres es obligatorio");
+        this.apellidos = validateRequiredText(apellidos, "Los apellidos es obligatorio");
         this.telefono = telefono;
         this.correo = correo;
     }
