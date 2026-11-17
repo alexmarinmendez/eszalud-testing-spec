@@ -48,4 +48,20 @@ public class AppointmentTest {
             );
         });
     }
+
+    @Test
+    @DisplayName("Rechazar la creación de una cita sin doctor")
+    void shouldRejectAppointmentWithoutDoctor() {
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Appointment(
+                    "patient-001",
+                    null,
+                    "specialty-001",
+                    LocalDateTime.of(2026, 12, 1, 9, 30),
+                    "Control general",
+                    AppointmentStatus.PROGRAMADA
+            );
+        });
+    }
 }
