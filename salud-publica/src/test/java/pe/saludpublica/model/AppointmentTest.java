@@ -80,4 +80,20 @@ public class AppointmentTest {
             );
         });
     }
+
+    @Test
+    @DisplayName("Rechazar la creación de una cita sin fecha y hora")
+    void shouldRejectAppointmentWithoutDateTime() {
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Appointment(
+                    "patient-001",
+                    "doctor-001",
+                    "specialty-001",
+                    null,
+                    "Control general",
+                    AppointmentStatus.PROGRAMADA
+            );
+        });
+    }
 }
