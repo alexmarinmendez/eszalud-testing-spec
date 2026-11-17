@@ -10,6 +10,7 @@ public class Paciente {
     public Paciente(String documento, String nombres, String apellidos, String telefono, String correo) {
         validarDocumento(documento);
         validarNombres(nombres);
+        validarApellidos(apellidos);
         this.documento = documento;
         this.nombres = nombres;
         this.apellidos = apellidos;
@@ -25,6 +26,11 @@ public class Paciente {
     private void validarNombres(String nombres) {
         if (nombres == null) {
             throw new IllegalArgumentException("Los nombres son obligatorios");
+        }
+    }
+    private void validarApellidos(String apellidos) {
+        if (apellidos == null) {
+            throw new IllegalArgumentException("Los apellidos son obligatorios");
         }
     }
 
