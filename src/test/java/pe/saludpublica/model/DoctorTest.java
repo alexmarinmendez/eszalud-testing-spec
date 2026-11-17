@@ -63,4 +63,16 @@ public class DoctorTest {
                 "ESP01"
         ));
     }
+
+    @Test
+    @DisplayName("Debe lanzar IllegalArgumentException cuando la colegiatura es nula")
+    void shouldRejectDoctorWhenLicenseIsNull() {
+        assertThrows(IllegalArgumentException.class, () -> new Doctor(
+                "87654321",
+                "María",
+                "López",
+                null,
+                "ESP01"
+        ));
+    }
 }
