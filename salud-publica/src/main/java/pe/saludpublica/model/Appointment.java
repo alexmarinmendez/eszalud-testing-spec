@@ -16,6 +16,7 @@ public class Appointment {
         this.patient = patient;
         validateRequired(doctor, "El doctor de la cita es obligatorio");
         this.doctor = doctor;
+        validateRequired(specialty, "La especialidad de la cita es obligatorio");
         this.specialty = specialty;
         this.dateTime = dateTime;
         this.reason = reason;
