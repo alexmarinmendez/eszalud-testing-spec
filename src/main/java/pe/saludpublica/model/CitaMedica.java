@@ -12,18 +12,19 @@ public class CitaMedica {
     private final EstadoCita estado;
 
     public CitaMedica(String paciente, String doctor, String especialidad, LocalDateTime fechaHora, String motivo, EstadoCita estado) {
-        if (paciente == null) {
-            throw new IllegalArgumentException("El identificador del paciente no puede ser nulo");
-        }
-        if (doctor == null) {
-            throw new IllegalArgumentException("El identificador del doctor no puede ser nulo");
-        }
-        this.paciente = paciente;
-        this.doctor = doctor;
+        this.paciente = requireNonNullField(paciente, "El identificador del paciente no puede ser nulo");
+        this.doctor = requireNonNullField(doctor, "El identificador del doctor no puede ser nulo");
         this.especialidad = especialidad;
         this.fechaHora = fechaHora;
         this.motivo = motivo;
         this.estado = estado;
+    }
+
+    private <T> T requireNonNullField(T value, String errorMessage) {
+        if (value == null) {
+            throw new IllegalArgumentException(errorMessage);
+        }
+        return value;
     }
 
     public String getPaciente() {
