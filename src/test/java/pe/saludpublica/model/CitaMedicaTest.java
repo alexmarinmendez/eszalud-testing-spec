@@ -88,6 +88,24 @@ class CitaMedicaTest {
         ));
     }
 
+    @Test
+    @DisplayName("Asignar estado PROGRAMADA por defecto cuando el estado es nulo")
+    void shouldAssignDefaultStatusWhenStatusIsNull() {
+        LocalDateTime fechaHora = LocalDateTime.of(2026, 11, 23, 16, 30);
+
+        CitaMedica cita = new CitaMedica(
+                "6af71e0b501cca046a166049",
+                "6af7271e501cca046a16604f",
+                "6af71da3501cca046a166045",
+                fechaHora,
+                "Dolor abdominal",
+                null
+        );
+
+        assertEquals(EstadoCita.PROGRAMADA, cita.getEstado());
+    }
+
+
 
 
 }
