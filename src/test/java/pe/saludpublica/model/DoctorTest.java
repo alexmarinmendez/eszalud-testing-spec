@@ -20,4 +20,10 @@ class DoctorTest {
             new Doctor(null, "Bianka", "Ataegina", "CMP12345", "Dermatologia");
         });
     }
+    @Test
+    void testRequiredLicenseValidation() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Doctor("12345678", "Bianka", "Ataegina", null, "Dermatologia");
+        });
+    }
 }
