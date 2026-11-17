@@ -8,14 +8,18 @@ public class Paciente {
     private final String correo;
 
     public Paciente(String documento, String nombres, String apellidos, String telefono, String correo) {
-        if (documento == null) {
-            throw new IllegalArgumentException("El documento es obligatorio");
-        }
+        validarDocumento(documento);
         this.documento = documento;
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.telefono = telefono;
         this.correo = correo;
+    }
+
+    private void validarDocumento(String documento) {
+        if (documento == null) {
+            throw new IllegalArgumentException("El documento es obligatorio");
+        }
     }
 
     public String getDocumento() { return documento; }
