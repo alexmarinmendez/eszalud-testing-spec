@@ -3,8 +3,10 @@ package pe.saludpublica.model;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class DoctorTest {
@@ -74,5 +76,25 @@ public class DoctorTest {
                 null,
                 "ESP01"
         ));
+    }
+
+    @Test
+    @DisplayName("Debe devolver todos los atributos asignados mediante sus getters tras construir el doctor")
+    void shouldReturnAssignedAttributesAfterDoctorConstruction() {
+        Doctor doctor = new Doctor(
+                "11223344",
+                "Carlos",
+                "Ruiz",
+                "COL98765",
+                null
+        );
+
+        assertAll(
+                () -> assertEquals("11223344", doctor.getDocumento()),
+                () -> assertEquals("Carlos", doctor.getNombres()),
+                () -> assertEquals("Ruiz", doctor.getApellidos()),
+                () -> assertEquals("COL98765", doctor.getColegiatura()),
+                () -> assertNull(doctor.getEspecialidad())
+        );
     }
 }
