@@ -31,8 +31,8 @@ public class PacienteTest {
         assertThrows(
                 IllegalArgumentException.class,
                 () -> new Paciente(
+                        "12345678",
                         null,
-                        "Ana",
                         "Pérez",
                         "987654321",
                         "ana@mail.com"
