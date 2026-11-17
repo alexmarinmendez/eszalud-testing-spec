@@ -12,7 +12,7 @@ public class Doctor {
         this.documento = requireNonNullField(documento, "El documento del doctor no puede ser nulo");
         this.nombres = requireNonNullField(nombres, "Los nombres del doctor no pueden ser nulos");
         this.apellidos = requireNonNullField(apellidos, "Los apellidos del doctor no pueden ser nulos");
-        this.colegiatura = colegiatura;
+        this.colegiatura = requireNonNullField(colegiatura, "La colegiatura del doctor no puede ser nula");
         this.especialidad = especialidad;
     }
 
