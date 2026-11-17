@@ -1,28 +1,42 @@
 package pe.saludpublica.model;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PacienteTest {
 
     @Test
+    @DisplayName("Crear un paciente con datos válidos")
     void ShouldCreateProjectWithValidData() {
         Paciente paciente = new Paciente(
                 "12345678",
-                "Marco",
-                "Francisco",
-                "970688997",
-                "null@gnail.pe"
+                "Ana",
+                "Pérez",
+                "987654321",
+                "ana@mail.com"
         );
         assertNotNull(paciente);
         assertEquals("12345678", paciente.getDocumento());
-        assertEquals("Marco", paciente.getNombres());
-        assertEquals("Francisco", paciente.getApellidos());
-        assertEquals("970688997", paciente.getTelefono());
-        assertEquals("null@gnail.pe", paciente.getCorreo());
-
-
+        assertEquals("Ana", paciente.getNombres());
+        assertEquals("Pérez", paciente.getApellidos());
+        assertEquals("987654321", paciente.getTelefono());
+        assertEquals("ana@mail.com", paciente.getCorreo());
 
     }
 
+    @Test
+    @DisplayName("Rechazar la creación de un paciente sin documento")
+    void shouldRejectPatientWithoutDocument() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new Paciente(
+                        null,
+                        "Ana",
+                        "Pérez",
+                        "987654321",
+                        "ana@mail.com"
+                )
+        );
+    }
 }
