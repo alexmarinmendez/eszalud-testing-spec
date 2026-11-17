@@ -24,4 +24,10 @@ public class PacienteTest {
             new Paciente(null, "Carlos", "Jimenez", "987654321", "Carlitos@test.com");
         });
     }
+    @Test
+    void testNullFirstNameValidation() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Paciente("73123456", null, "Jimenez", "987654321", "Carlitos@test.com");
+        });
+    }
 }
