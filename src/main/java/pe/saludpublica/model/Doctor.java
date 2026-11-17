@@ -14,6 +14,9 @@ public class Doctor {
             throw new IllegalArgumentException("El documento es obligatorio");
         }
         this.documento = documento;
+        if (nombres == null) {
+            throw new IllegalArgumentException("Los nombres son obligatorios");
+        }
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.colegiatura = colegiatura;
