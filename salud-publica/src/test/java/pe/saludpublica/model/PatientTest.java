@@ -1,6 +1,8 @@
-package model;
+package pe.saludpublica.model;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import pe.saludpublica.model.Patient;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -8,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class PatientTest {
 
     @Test
+    @DisplayName("Crear un paciente con datos válidos")
     void shouldCreatePatientWithValidData() {
 
         Patient patient = new Patient(
