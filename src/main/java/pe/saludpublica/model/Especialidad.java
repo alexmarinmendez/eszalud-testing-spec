@@ -7,6 +7,9 @@ public class Especialidad {
 
     public Especialidad(String codigo, String nombre) {
         this.codigo = codigo;
+        if (nombre == null) {
+            throw new IllegalArgumentException("El nombre es obligatorio");
+        }
         this.nombre = nombre;
     }
 
