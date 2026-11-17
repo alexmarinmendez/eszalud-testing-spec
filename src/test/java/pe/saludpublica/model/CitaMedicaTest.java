@@ -71,4 +71,17 @@ public class CitaMedicaTest {
                 EstadoCita.PROGRAMADA
         ));
     }
+
+    @Test
+    @DisplayName("Debe lanzar IllegalArgumentException cuando la fecha y hora son nulas")
+    void shouldRejectAppointmentWhenDateTimeIsNull() {
+        assertThrows(IllegalArgumentException.class, () -> new CitaMedica(
+                "PAC-001",
+                "DOC-001",
+                "ESP-001",
+                null,
+                "Control general",
+                EstadoCita.PROGRAMADA
+        ));
+    }
 }
