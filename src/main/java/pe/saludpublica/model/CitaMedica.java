@@ -15,7 +15,7 @@ public class CitaMedica {
         this.paciente = requireNonNullField(paciente, "El identificador del paciente no puede ser nulo");
         this.doctor = requireNonNullField(doctor, "El identificador del doctor no puede ser nulo");
         this.especialidad = requireNonNullField(especialidad, "El identificador de la especialidad no puede ser nulo");
-        this.fechaHora = fechaHora;
+        this.fechaHora = requireNonNullField(fechaHora, "La fecha y hora de la cita no pueden ser nulas");
         this.motivo = motivo;
         this.estado = estado;
     }
