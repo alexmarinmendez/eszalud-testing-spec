@@ -30,4 +30,10 @@ public class PacienteTest {
             new Paciente("73123456", null, "Jimenez", "987654321", "Carlitos@test.com");
         });
     }
+    @Test
+    void testNullLastNameValidation() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Paciente("73123456", "Carlos", null, "987654321", "Carlitos@test.com");
+        });
+    }
 }
