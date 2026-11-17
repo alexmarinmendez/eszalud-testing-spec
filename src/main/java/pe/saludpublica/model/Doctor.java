@@ -18,6 +18,9 @@ public class Doctor {
             throw new IllegalArgumentException("Los nombres son obligatorios");
         }
         this.nombres = nombres;
+        if (apellidos == null) {
+            throw new IllegalArgumentException("Los apellidos son obligatorios");
+        }
         this.apellidos = apellidos;
         this.colegiatura = colegiatura;
         this.especialidad = especialidad;
