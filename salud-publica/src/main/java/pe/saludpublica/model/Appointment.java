@@ -23,7 +23,7 @@ public class Appointment {
         }
         this.dateTime = dateTime;
         this.reason = reason;
-        this.status = status;
+        this.status = (status == null) ? AppointmentStatus.PROGRAMADA : status;
     }
 
     private static void validateRequired(String value, String message) {
