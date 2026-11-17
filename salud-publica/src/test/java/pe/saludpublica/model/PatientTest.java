@@ -55,4 +55,18 @@ public class PatientTest {
             );
         });
     }
+
+    @Test
+    @DisplayName("Rechazar la creación de un paciente sin apellidos")
+    void shouldRejectPatientWithoutSurnames() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Patient(
+                    "12345678",
+                    "Carlos",
+                    null,
+                    "987654321",
+                    "carlosperez@gmail.com"
+            );
+        });
+    }
 }
