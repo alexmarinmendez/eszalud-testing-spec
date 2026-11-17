@@ -1,0 +1,27 @@
+package pe.saludpublica.model;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class DoctorTest {
+
+    @Test
+    @DisplayName("Crear un doctor con datos válidos")
+    void shouldCreateDoctorWithValidData() {
+        Doctor doctor = new Doctor(
+                "45678912",
+                "Roberto Enrique",
+                "Salazar Mendoza",
+                "CMP 085432",
+                "6af71da3501cca046a166045"
+        );
+
+        assertNotNull(doctor);
+        assertEquals("45678912", doctor.getDocumento());
+        assertEquals("Roberto Enrique", doctor.getNombres());
+        assertEquals("Salazar Mendoza", doctor.getApellidos());
+        assertEquals("CMP 085432", doctor.getColegiatura());
+        assertEquals("6af71da3501cca046a166045", doctor.getEspecialidad());
+    }
+}
