@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CitaMedicaTest {
 
@@ -30,5 +31,18 @@ public class CitaMedicaTest {
         assertEquals(now, cita.getFechaHora());
         assertEquals("Control general", cita.getMotivo());
         assertEquals(EstadoCita.PROGRAMADA, cita.getEstado());
+    }
+
+    @Test
+    @DisplayName("Debe lanzar IllegalArgumentException cuando el paciente es nulo")
+    void shouldRejectAppointmentWhenPatientIsNull() {
+        assertThrows(IllegalArgumentException.class, () -> new CitaMedica(
+                null,
+                "DOC-001",
+                "ESP-001",
+                LocalDateTime.now(),
+                "Control general",
+                EstadoCita.PROGRAMADA
+        ));
     }
 }
