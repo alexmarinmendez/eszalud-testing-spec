@@ -5,11 +5,15 @@ public class Especialidad {
     private String descripcion;
 
     public Especialidad(String nombre, String descripcion) {
-        if (nombre == null) {
-            throw new IllegalArgumentException("El nombre de la especialidad es obligatorio");
-        }
-        this.nombre = nombre;
+        this.nombre = validateRequiredText(nombre,"El nombre de la especialidad es obligatorio");
         this.descripcion = descripcion;
+    }
+
+    private String validateRequiredText(String value, String alertMenssage) {
+        if (value == null ) {
+            throw new IllegalArgumentException(alertMenssage);
+        }
+        return value.trim();
     }
 
     public String getNombre() {
