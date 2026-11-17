@@ -45,4 +45,19 @@ class CitaMedicaTest {
         ));
     }
 
+    @Test
+    @DisplayName("Rechazar la creación de una cita médica sin identificador de doctor")
+    void shouldRejectAppointmentWithoutDoctor() {
+        LocalDateTime fechaHora = LocalDateTime.of(2026, 11, 23, 16, 30);
+
+        assertThrows(IllegalArgumentException.class, () -> new CitaMedica(
+                "6af71e0b501cca046a166049",
+                null,
+                "6af71da3501cca046a166045",
+                fechaHora,
+                "Dolor abdominal",
+                EstadoCita.PROGRAMADA
+        ));
+    }
+
 }
