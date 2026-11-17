@@ -29,6 +29,9 @@ public class CitaMedica {
             throw new IllegalArgumentException("La fecha y hora son obligatorias");
         }
         this.fechaHora = fechaHora;
+        if (estado == null) {
+            throw new IllegalArgumentException("El estado es obligatorio");
+        }
         this.motivo = motivo;
         this.estado = estado;
 
