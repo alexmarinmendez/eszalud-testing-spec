@@ -42,4 +42,17 @@ class PacienteTest {
         assertThrows(IllegalArgumentException.class, () -> new Paciente(
                 "12345678", "Ana", null, "987654321", "ana@mail.com"));
     }
+
+    @Test
+    @DisplayName("Conservar los atributos de un paciente después de construirlo")
+    void shouldReturnPatientAttributesAfterConstruction() {
+        Paciente paciente = new Paciente(
+                "87654321", "Luis", "Gómez", "912345678", "luis@example.com");
+
+        assertEquals("87654321", paciente.getDocumento());
+        assertEquals("Luis", paciente.getNombres());
+        assertEquals("Gómez", paciente.getApellidos());
+        assertEquals("912345678", paciente.getTelefono());
+        assertEquals("luis@example.com", paciente.getCorreo());
+    }
 }
