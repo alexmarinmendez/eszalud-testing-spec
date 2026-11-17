@@ -32,8 +32,8 @@ public class PacienteTest {
                 IllegalArgumentException.class,
                 () -> new Paciente(
                         "12345678",
+                        "Ana",
                         null,
-                        "Pérez",
                         "987654321",
                         "ana@mail.com"
                 )
