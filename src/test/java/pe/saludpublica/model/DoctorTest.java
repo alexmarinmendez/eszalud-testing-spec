@@ -83,4 +83,22 @@ class DoctorTest {
                 )
         );
     }
+    @Test
+    @DisplayName("Verificar los atributos después de construir el objeto")
+    void shouldVerifyAttributesAfterConstruction() {
+        Doctor doctor = new Doctor(
+                "87654321",
+                "María",
+                "Rodríguez",
+                "COL12345",
+                "Cardiología"
+        );
+
+        assertNotNull(doctor);
+        assertEquals("87654321", doctor.getDocumento());
+        assertEquals("María", doctor.getNombres());
+        assertEquals("Rodríguez", doctor.getApellidos());
+        assertEquals("COL12345", doctor.getColegiatura());
+        assertEquals("Cardiología", doctor.getEspecialidad());
+    }
 }
