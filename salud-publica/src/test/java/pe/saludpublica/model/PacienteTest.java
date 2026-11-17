@@ -8,7 +8,7 @@ public class PacienteTest {
 
     @Test
     @DisplayName("Crear un paciente con datos válidos")
-    void ShouldCreateProjectWithValidData() {
+    void ShouldCreatePatientWithValidData() {
         Paciente paciente = new Paciente(
                 "12345678",
                 "Ana",
