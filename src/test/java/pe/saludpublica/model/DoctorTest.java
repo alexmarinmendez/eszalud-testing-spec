@@ -37,5 +37,5 @@ class DoctorTest {
         assertThrows(IllegalArgumentException.class, () -> {
             new Doctor("12345678", "Bianka", null, "CMP12345", "Dermatologia");
         });
-    }
+     }
 }
