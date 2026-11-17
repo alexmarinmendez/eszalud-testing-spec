@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AppointmentTest {
 
@@ -32,5 +31,21 @@ public class AppointmentTest {
         assertEquals(dateTime, appointment.getDateTime());
         assertEquals("Control general", appointment.getReason());
         assertEquals(AppointmentStatus.PROGRAMADA, appointment.getStatus());
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de una cita sin paciente")
+    void shouldRejectAppointmentWithoutPatient() {
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Appointment(
+                    null,
+                    "doctor-001",
+                    "specialty-001",
+                    LocalDateTime.of(2026, 12, 1, 9, 30),
+                    "Control general",
+                    AppointmentStatus.PROGRAMADA
+            );
+        });
     }
 }
