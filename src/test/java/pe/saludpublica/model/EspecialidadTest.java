@@ -3,8 +3,10 @@ package pe.saludpublica.model;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class EspecialidadTest {
@@ -29,5 +31,19 @@ public class EspecialidadTest {
                 null,
                 "Especialidad sin nombre"
         ));
+    }
+
+    @Test
+    @DisplayName("Debe devolver todos los atributos asignados mediante sus getters tras construir la especialidad")
+    void shouldReturnAssignedAttributesAfterSpecialtyConstruction() {
+        Especialidad especialidad = new Especialidad(
+                "Pediatría",
+                null
+        );
+
+        assertAll(
+                () -> assertEquals("Pediatría", especialidad.getNombre()),
+                () -> assertNull(especialidad.getDescripcion())
+        );
     }
 }
