@@ -14,7 +14,7 @@ public class CitaMedica {
     public CitaMedica(String paciente, String doctor, String especialidad, LocalDateTime fechaHora, String motivo, EstadoCita estado) {
         this.paciente = requireNonNullField(paciente, "El identificador del paciente no puede ser nulo");
         this.doctor = requireNonNullField(doctor, "El identificador del doctor no puede ser nulo");
-        this.especialidad = especialidad;
+        this.especialidad = requireNonNullField(especialidad, "El identificador de la especialidad no puede ser nulo");
         this.fechaHora = fechaHora;
         this.motivo = motivo;
         this.estado = estado;
