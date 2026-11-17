@@ -26,11 +26,18 @@ public class Doctor {
             throw new IllegalArgumentException("La colegiatura es obligatoria");
         }
 
-        this.documento = documento;
-        this.nombres = nombres;
-        this.apellidos = apellidos;
-        this.colegiatura = colegiatura;
+        this.documento = validarCampoObligatorio(documento, "El documento es obligatorio");
+        this.nombres = validarCampoObligatorio(nombres, "Los nombres son obligatorios");
+        this.apellidos = validarCampoObligatorio(apellidos, "Los apellidos son obligatorios");
+        this.colegiatura = validarCampoObligatorio(colegiatura, "La colegiatura es obligatoria");
         this.especialidad = especialidad;
+    }
+
+    private String validarCampoObligatorio(String valor, String mensaje) {
+        if (valor == null || valor.isBlank()) {
+            throw new IllegalArgumentException(mensaje);
+        }
+        return valor;
     }
 
     public String getDocumento() { return documento; }
