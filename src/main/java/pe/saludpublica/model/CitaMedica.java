@@ -17,7 +17,7 @@ public class CitaMedica {
         this.especialidad = requireNonNullField(especialidad, "El identificador de la especialidad no puede ser nulo");
         this.fechaHora = requireNonNullField(fechaHora, "La fecha y hora de la cita no pueden ser nulas");
         this.motivo = motivo;
-        this.estado = estado;
+        this.estado = estado != null ? estado : EstadoCita.PROGRAMADA;
     }
 
     private <T> T requireNonNullField(T value, String errorMessage) {
