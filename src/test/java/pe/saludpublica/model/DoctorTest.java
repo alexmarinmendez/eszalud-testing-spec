@@ -17,7 +17,7 @@ class DoctorTest {
     @Test
     void testRequiredDocumentValidation() {
         assertThrows(IllegalArgumentException.class, () -> {
-            new Doctor(null, "Ana", "Lopez", "CMP12345", "Cardiologia");
+            new Doctor(null, "Bianka", "Ataegina", "CMP12345", "Dermatologia");
         });
     }
 }

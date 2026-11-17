@@ -9,12 +9,18 @@ private String colegiatura;
 private String especialidad;
 
 public Doctor(String documento, String nombres, String apellidos, String colegiatura, String especialidad) {
+    validarDocumento(documento);
     this.documento = documento;
     this.nombres = nombres;
     this.apellidos = apellidos;
     this.colegiatura = colegiatura;
     this.especialidad = especialidad;
 }
+    private void validarDocumento(String documento) {
+        if (documento == null) {
+            throw new IllegalArgumentException("El documento es obligatorio");
+        }
+    }
 
 public String getDocumento() { return documento; }
 public String getNombres() { return nombres; }
