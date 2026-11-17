@@ -101,4 +101,21 @@ public class CitaMedicaTest {
         assertNotNull(cita);
         assertEquals(EstadoCita.PROGRAMADA, cita.getEstado());
     }
+
+    @Test
+    @DisplayName("Debe conservar correctamente el estado válido recibido en el constructor")
+    void shouldPreserveValidProvidedState() {
+        LocalDateTime now = LocalDateTime.now();
+        CitaMedica cita = new CitaMedica(
+                "PAC-001",
+                "DOC-001",
+                "ESP-001",
+                now,
+                "Control general",
+                EstadoCita.ATENDIDA
+        );
+
+        assertNotNull(cita);
+        assertEquals(EstadoCita.ATENDIDA, cita.getEstado());
+    }
 }
