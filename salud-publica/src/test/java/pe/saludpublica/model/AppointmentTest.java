@@ -1,0 +1,155 @@
+package pe.saludpublica.model;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import java.time.LocalDateTime;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AppointmentTest {
+
+    @Test
+    @DisplayName("Crear una cita médica con datos válidos")
+    void shouldCreateAppointmentWithValidData() {
+
+        LocalDateTime dateTime = LocalDateTime.of(2026, 12, 1, 9, 30);
+
+        Appointment appointment = new Appointment(
+                "patient-001",
+                "doctor-001",
+                "specialty-001",
+                dateTime,
+                "Control general",
+                AppointmentStatus.PROGRAMADA
+        );
+
+        assertNotNull(appointment);
+        assertEquals("patient-001", appointment.getPatient());
+        assertEquals("doctor-001", appointment.getDoctor());
+        assertEquals("specialty-001", appointment.getSpecialty());
+        assertEquals(dateTime, appointment.getDateTime());
+        assertEquals("Control general", appointment.getReason());
+        assertEquals(AppointmentStatus.PROGRAMADA, appointment.getStatus());
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de una cita sin paciente")
+    void shouldRejectAppointmentWithoutPatient() {
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Appointment(
+                    null,
+                    "doctor-001",
+                    "specialty-001",
+                    LocalDateTime.of(2026, 12, 1, 9, 30),
+                    "Control general",
+                    AppointmentStatus.PROGRAMADA
+            );
+        });
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de una cita sin doctor")
+    void shouldRejectAppointmentWithoutDoctor() {
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Appointment(
+                    "patient-001",
+                    null,
+                    "specialty-001",
+                    LocalDateTime.of(2026, 12, 1, 9, 30),
+                    "Control general",
+                    AppointmentStatus.PROGRAMADA
+            );
+        });
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de una cita sin especialidad")
+    void shouldRejectAppointmentWithoutSpecialty() {
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Appointment(
+                    "patient-001",
+                    "doctor-001",
+                    null,
+                    LocalDateTime.of(2026, 12, 1, 9, 30),
+                    "Control general",
+                    AppointmentStatus.PROGRAMADA
+            );
+        });
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de una cita sin fecha y hora")
+    void shouldRejectAppointmentWithoutDateTime() {
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Appointment(
+                    "patient-001",
+                    "doctor-001",
+                    "specialty-001",
+                    null,
+                    "Control general",
+                    AppointmentStatus.PROGRAMADA
+            );
+        });
+    }
+
+    @Test
+    @DisplayName("Asignar el estado PROGRAMADA cuando el estado recibido es null")
+    void shouldDefaultStatusToProgramadaWhenStatusIsNull() {
+
+        Appointment appointment = new Appointment(
+                "patient-001",
+                "doctor-001",
+                "specialty-001",
+                LocalDateTime.of(2026, 12, 1, 9,30),
+                "Control general",
+                null
+        );
+
+        assertEquals(AppointmentStatus.PROGRAMADA, appointment.getStatus());
+    }
+
+    @Test
+    @DisplayName("Conservar el estado válido recibido")
+    void shouldKeepValidStatus() {
+
+        Appointment appointment = new Appointment(
+                "patient-001",
+                "doctor-001",
+                "specialty-001",
+                LocalDateTime.of(2026, 12, 1, 9,30),
+                "Control general",
+                AppointmentStatus.ATENDIDA
+        );
+
+        assertEquals(AppointmentStatus.ATENDIDA, appointment.getStatus());
+    }
+
+    @Test
+    @DisplayName("Verificar los atributos después de construir la cita")
+    void shouldReturnAttributesAfterConstruction() {
+
+        LocalDateTime dateTime = LocalDateTime.of(2027, 1, 15, 14, 0);
+
+        Appointment appointment = new Appointment(
+                "patient-002",
+                "doctor-002",
+                "specialty-002",
+                dateTime,
+                "Dolor de cabeza",
+                AppointmentStatus.CANCELADA
+        );
+
+        assertEquals("patient-002", appointment.getPatient());
+        assertEquals("doctor-002", appointment.getDoctor());
+        assertEquals("specialty-002", appointment.getSpecialty());
+        assertEquals(dateTime, appointment.getDateTime());
+        assertEquals("Dolor de cabeza", appointment.getReason());
+        assertEquals(AppointmentStatus.CANCELADA, appointment.getStatus());
+    }
+
+}

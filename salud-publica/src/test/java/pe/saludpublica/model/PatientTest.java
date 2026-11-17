@@ -1,0 +1,91 @@
+package pe.saludpublica.model;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import pe.saludpublica.model.Patient;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class PatientTest {
+
+    @Test
+    @DisplayName("Crear un paciente con datos válidos")
+    void shouldCreatePatientWithValidData() {
+
+        Patient patient = new Patient(
+                "12345678",
+                "Carlos",
+                "Pérez",
+                "987654321",
+                "carlosperez@gmail.com"
+        );
+
+        assertNotNull(patient);
+        assertEquals("12345678", patient.getDocument());
+        assertEquals("Carlos", patient.getNames());
+        assertEquals("Pérez", patient.getSurnames());
+        assertEquals("987654321", patient.getPhone());
+        assertEquals("carlosperez@gmail.com", patient.getEmail());
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de un paciente sin documento")
+    void shouldRejectPatientWithoutDocument() {
+         assertThrows(IllegalArgumentException.class, () -> {
+             new Patient(
+                     null,
+                     "Carlos",
+                     "Pérez",
+                     "987654321",
+                     "carlosperez@gmail.com"
+             );
+         });
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de un paciente sin nombres")
+    void shouldRejectPatientWithoutNames() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Patient(
+                    "12345678",
+                    null,
+                    "Pérez",
+                    "987654321",
+                    "carlosperez@gmail.com"
+            );
+        });
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de un paciente sin apellidos")
+    void shouldRejectPatientWithoutSurnames() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Patient(
+                    "12345678",
+                    "Carlos",
+                    null,
+                    "987654321",
+                    "carlosperez@gmail.com"
+            );
+        });
+    }
+
+    @Test
+    @DisplayName("Verificar los atributos después de construir el paciente")
+    void shouldReturnAttributesAfterConstruction() {
+
+        Patient patient = new Patient(
+                "87654321",
+                "María",
+                "Gómez",
+                "912345678",
+                "maria@gmail.com"
+        );
+
+        assertEquals("87654321", patient.getDocument());
+        assertEquals("María", patient.getNames());
+        assertEquals("Gómez", patient.getSurnames());
+        assertEquals("912345678", patient.getPhone());
+        assertEquals("maria@gmail.com", patient.getEmail());
+    }
+}
