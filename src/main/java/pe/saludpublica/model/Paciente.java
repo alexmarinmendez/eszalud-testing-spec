@@ -18,11 +18,11 @@ public class Paciente {
         if (apellidos == null) {
             throw new IllegalArgumentException("Los apellidos no pueden ser nulos");
         }
-        this.documento = documento;
-        this.nombres = nombres;
-        this.apellidos = apellidos;
-        this.telefono = telefono;
-        this.correo = correo;
+        this.documento = documento.trim();
+        this.nombres = nombres.trim();
+        this.apellidos = apellidos.trim();
+        this.telefono = telefono != null ? telefono.trim() : null;
+        this.correo = correo != null ? correo.trim() : null;
     }
 
     public String getDocumento() {
