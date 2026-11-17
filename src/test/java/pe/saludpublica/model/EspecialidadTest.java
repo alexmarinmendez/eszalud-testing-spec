@@ -31,4 +31,16 @@ class EspecialidadTest {
                 )
         );
     }
+    @Test
+    @DisplayName("Verificar los atributos después de construir el objeto")
+    void shouldVerifyAttributesAfterConstruction() {
+        Especialidad especialidad = new Especialidad(
+                "ESP01",
+                "Cardiología"
+        );
+
+        assertNotNull(especialidad);
+        assertEquals("ESP01", especialidad.getCodigo());
+        assertEquals("Cardiología", especialidad.getNombre());
+    }
 }
