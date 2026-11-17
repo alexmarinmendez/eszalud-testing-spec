@@ -27,7 +27,7 @@ public class CitaMedica {
             throw new IllegalArgumentException("La fecha y hora son obligatorias");
         }
         this.fechaHora = fechaHora;
-        this.estado = estado;
+        this.estado = (estado == null) ? "PROGRAMADA" : estado;
     }
 
     public String getPacienteId() { return pacienteId; }
