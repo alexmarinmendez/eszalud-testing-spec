@@ -1,4 +1,14 @@
 package pe.saludpublica.model;
 
-public class EspecialidadTest {
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class EspecialidadTest {
+    @Test
+    void testValidSpecialtyCreation() {
+        Especialidad especialidad = new Especialidad("ESP01", "Neumologia");
+
+        assertEquals("ESP01", especialidad.getCodigo());
+        assertEquals("Neumologia", especialidad.getNombre());
+    }
 }
