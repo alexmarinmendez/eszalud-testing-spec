@@ -9,20 +9,20 @@ public class Patient {
     private String email;
 
     public Patient(String document, String names, String surnames, String phone, String email) {
-        if (document == null || document.isBlank()) {
-            throw new IllegalArgumentException("El documento del paciente es obligatorio");
-        }
+        validateRequired(document, "El documento del paciente es obligatorio");
         this.document = document;
-        if (names == null || names.isBlank()) {
-            throw new IllegalArgumentException("Los nombres del paciente son obligatorios");
-        }
+        validateRequired(names, "Los nombres del paciente son obligatorios");
         this.names = names;
-        if (surnames == null || surnames.isBlank()) {
-            throw new IllegalArgumentException("Los apellidos del paciente son obligatorios");
-        }
+        validateRequired(surnames, "Los apellidos del paciente son obligatorios");
         this.surnames = surnames;
         this.phone = phone;
         this.email = email;
+    }
+
+    private static void validateRequired(String value, String message) {
+        if (value == null || value.isBlank()) {
+            throw new IllegalArgumentException(message);
+        }
     }
 
     public String getDocument() {
