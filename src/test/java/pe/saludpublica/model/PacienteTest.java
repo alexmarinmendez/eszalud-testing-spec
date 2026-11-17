@@ -9,13 +9,19 @@ public class PacienteTest {
     @Test
     @DisplayName("PAC-001: Crear un paciente con datos válidos")
     void shouldCreatePatientWithValidData() {
-        Paciente paciente = new Paciente("12345678", "Ana", "Pérez", "987654321", "ana@mail.com");
+        Paciente paciente = new Paciente("12345678", "Carlos", "Jimenez", "987654321", "Carlitos@mail.com");
 
         assertNotNull(paciente);
         assertEquals("12345678", paciente.getDocumento());
-        assertEquals("Ana", paciente.getNombres());
-        assertEquals("Pérez", paciente.getApellidos());
+        assertEquals("Carlos", paciente.getNombres());
+        assertEquals("Jimenez", paciente.getApellidos());
         assertEquals("987654321", paciente.getTelefono());
-        assertEquals("ana@mail.com", paciente.getCorreo());
+        assertEquals("Carlitos@mail.com", paciente.getCorreo());
+    }
+    @Test
+    void testNullDocumentValidation() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Paciente(null, "Carlos", "Jimenez", "987654321", "Carlitos@test.com");
+        });
     }
 }
