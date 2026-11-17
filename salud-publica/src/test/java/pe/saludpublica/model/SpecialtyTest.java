@@ -32,4 +32,17 @@ public class SpecialtyTest {
             );
         });
     }
+
+    @Test
+    @DisplayName("Verificar los atributos después de construir la especialidad")
+    void shouldReturnAttributesAfterConstruction() {
+
+        Specialty specialty = new Specialty(
+                "Pediatría",
+                "Atención médica de niños y adolescentes"
+        );
+
+        assertEquals("Pediatría", specialty.getName());
+        assertEquals("Atención médica de niños y adolescentes", specialty.getDescription());
+    }
 }
