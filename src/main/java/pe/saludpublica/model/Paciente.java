@@ -22,12 +22,20 @@ public class Paciente {
             throw new IllegalArgumentException("Los apellidos son obligatorios");
         }
 
-        this.documento = documento;
-        this.nombres = nombres;
-        this.apellidos = apellidos;
+        this.documento = validarCampoObligatorio(documento, "El documento es obligatorio");
+        this.nombres = validarCampoObligatorio(nombres, "Los nombres son obligatorios");
+        this.apellidos = validarCampoObligatorio(apellidos, "Los apellidos son obligatorios");
         this.telefono = telefono;
         this.correo = correo;
     }
+
+    private String validarCampoObligatorio(String valor, String mensaje) {
+        if (valor == null || valor.isBlank()) {
+            throw new IllegalArgumentException(mensaje);
+        }
+        return valor;
+    }
+
 
     public String getDocumento() { return documento; }
     public String getNombres() { return nombres; }
