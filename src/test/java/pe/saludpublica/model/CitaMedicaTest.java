@@ -58,4 +58,17 @@ public class CitaMedicaTest {
                 EstadoCita.PROGRAMADA
         ));
     }
+
+    @Test
+    @DisplayName("Debe lanzar IllegalArgumentException cuando la especialidad es nula")
+    void shouldRejectAppointmentWhenSpecialtyIsNull() {
+        assertThrows(IllegalArgumentException.class, () -> new CitaMedica(
+                "PAC-001",
+                "DOC-001",
+                null,
+                LocalDateTime.now(),
+                "Control general",
+                EstadoCita.PROGRAMADA
+        ));
+    }
 }
