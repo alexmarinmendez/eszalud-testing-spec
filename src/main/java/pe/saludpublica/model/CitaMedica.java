@@ -12,11 +12,11 @@ public class CitaMedica {
     private final EstadoCita estado;
 
     public CitaMedica(String paciente, String doctor, String especialidad, LocalDateTime fechaHora, String motivo, EstadoCita estado) {
-        this.paciente = requireNonNullField(paciente, "El identificador del paciente no puede ser nulo");
-        this.doctor = requireNonNullField(doctor, "El identificador del doctor no puede ser nulo");
-        this.especialidad = requireNonNullField(especialidad, "El identificador de la especialidad no puede ser nulo");
+        this.paciente = requireNonNullField(paciente, "El identificador del paciente no puede ser nulo").trim();
+        this.doctor = requireNonNullField(doctor, "El identificador del doctor no puede ser nulo").trim();
+        this.especialidad = requireNonNullField(especialidad, "El identificador de la especialidad no puede ser nulo").trim();
         this.fechaHora = requireNonNullField(fechaHora, "La fecha y hora de la cita no pueden ser nulas");
-        this.motivo = motivo;
+        this.motivo = motivo != null ? motivo.trim() : null;
         this.estado = estado != null ? estado : EstadoCita.PROGRAMADA;
     }
 
@@ -54,5 +54,4 @@ public class CitaMedica {
     public boolean isAtendida() {
         return this.estado == EstadoCita.ATENDIDA;
     }
-
 }
