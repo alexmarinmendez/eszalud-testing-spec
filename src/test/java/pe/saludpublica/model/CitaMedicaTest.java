@@ -29,4 +29,20 @@ class CitaMedicaTest {
         assertEquals("Dolor abdominal", cita.getMotivo());
         assertEquals(EstadoCita.PROGRAMADA, cita.getEstado());
     }
+
+    @Test
+    @DisplayName("Rechazar la creación de una cita médica sin identificador de paciente")
+    void shouldRejectAppointmentWithoutPatient() {
+        LocalDateTime fechaHora = LocalDateTime.of(2026, 11, 23, 16, 30);
+
+        assertThrows(IllegalArgumentException.class, () -> new CitaMedica(
+                null,
+                "6af7271e501cca046a16604f",
+                "6af71da3501cca046a166045",
+                fechaHora,
+                "Dolor abdominal",
+                EstadoCita.PROGRAMADA
+        ));
+    }
+
 }
