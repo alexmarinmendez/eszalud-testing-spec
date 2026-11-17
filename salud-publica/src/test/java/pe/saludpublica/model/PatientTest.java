@@ -69,4 +69,23 @@ public class PatientTest {
             );
         });
     }
+
+    @Test
+    @DisplayName("Verificar los atributos después de construir el paciente")
+    void shouldReturnAttributesAfterConstruction() {
+
+        Patient patient = new Patient(
+                "87654321",
+                "María",
+                "Gómez",
+                "912345678",
+                "maria@gmail.com"
+        );
+
+        assertEquals("87654321", patient.getDocument());
+        assertEquals("María", patient.getNames());
+        assertEquals("Gómez", patient.getSurnames());
+        assertEquals("912345678", patient.getPhone());
+        assertEquals("maria@gmail.com", patient.getEmail());
+    }
 }
