@@ -112,4 +112,20 @@ public class AppointmentTest {
 
         assertEquals(AppointmentStatus.PROGRAMADA, appointment.getStatus());
     }
+
+    @Test
+    @DisplayName("Conservar el estado válido recibido")
+    void shouldKeepValidStatus() {
+
+        Appointment appointment = new Appointment(
+                "patient-001",
+                "doctor-001",
+                "specialty-001",
+                LocalDateTime.of(2026, 12, 1, 9,30),
+                "Control general",
+                AppointmentStatus.ATENDIDA
+        );
+
+        assertEquals(AppointmentStatus.ATENDIDA, appointment.getStatus());
+    }
 }
