@@ -41,4 +41,18 @@ public class DoctorTest {
             );
         });
     }
+
+    @Test
+    @DisplayName("Rechazar la creación de un doctor sin nombres")
+    void shouldRejectDoctorWithoutNames() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Doctor(
+                    "45678912",
+                    null,
+                    "Ramírez",
+                    "12345",
+                    "specialty-001"
+            );
+        });
+    }
 }
