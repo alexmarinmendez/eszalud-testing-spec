@@ -1,4 +1,17 @@
 package pe.saludpublica.model;
 
-public class DoctorTest {
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class DoctorTest {
+    @Test
+    void testValidDoctorCreation() {
+        Doctor doctor = new Doctor("12345678", "Bianka", "Ataegina", "CMP12345", "Dermatologia");
+
+        assertEquals("12345678", doctor.getDocumento());
+        assertEquals("CMP12345", doctor.getColegiatura());
+        assertEquals("Bianka", doctor.getNombres());
+        assertEquals("Ataegina", doctor.getApellidos());
+        assertEquals("Dermatologia", doctor.getEspecialidad());
+    }
 }
