@@ -27,4 +27,20 @@ class EspecialidadTest {
                 "Atención primaria"
         ));
     }
+
+    @Test
+    @DisplayName("Verificar los atributos después de construir el objeto especialidad")
+    void shouldPreserveAllAttributesAfterCreation() {
+        Especialidad especialidad = new Especialidad(
+                "  Pediatría  ",
+                "  Atención de niños y adolescentes  "
+        );
+
+        assertAll(
+                () -> assertEquals("Pediatría", especialidad.getNombre()),
+                () -> assertEquals("Atención de niños y adolescentes", especialidad.getDescripcion())
+        );
+    }
+
+
 }
