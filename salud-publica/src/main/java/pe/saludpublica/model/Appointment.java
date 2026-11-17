@@ -18,6 +18,9 @@ public class Appointment {
         this.doctor = doctor;
         validateRequired(specialty, "La especialidad de la cita es obligatorio");
         this.specialty = specialty;
+        if (dateTime == null) {
+            throw new IllegalArgumentException("La fecha y hora de la cita son obligatorios");
+        }
         this.dateTime = dateTime;
         this.reason = reason;
         this.status = status;
