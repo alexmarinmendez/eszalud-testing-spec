@@ -13,6 +13,7 @@ public class Doctor {
         this.document = document;
         validateRequired(names, "Los nombres del doctor son obligatorio");
         this.names = names;
+        validateRequired(surnames, "Los apellidos del doctor son obligatorios");
         this.surnames = surnames;
         this.licenseNumber = licenseNumber;
         this.specialty = specialty;
