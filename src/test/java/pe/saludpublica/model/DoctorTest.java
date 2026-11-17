@@ -26,4 +26,10 @@ class DoctorTest {
             new Doctor("12345678", "Bianka", "Ataegina", null, "Dermatologia");
         });
     }
+    @Test
+    void testRequiredFirstNameValidation() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Doctor("12345678", null, "Ataegina", "CMP12345", "Dermatologia");
+        });
+    }
 }
