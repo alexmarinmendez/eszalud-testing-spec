@@ -52,7 +52,7 @@ public class CitaMedica {
     }
 
     public boolean isAtendida() {
-        return false;
+        return this.estado == EstadoCita.ATENDIDA;
     }
 
 }
