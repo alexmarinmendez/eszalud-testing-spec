@@ -128,4 +128,28 @@ public class AppointmentTest {
 
         assertEquals(AppointmentStatus.ATENDIDA, appointment.getStatus());
     }
+
+    @Test
+    @DisplayName("Verificar los atributos después de construir la cita")
+    void shouldReturnAttributesAfterConstruction() {
+
+        LocalDateTime dateTime = LocalDateTime.of(2027, 1, 15, 14, 0);
+
+        Appointment appointment = new Appointment(
+                "patient-002",
+                "doctor-002",
+                "specialty-002",
+                dateTime,
+                "Dolor de cabeza",
+                AppointmentStatus.CANCELADA
+        );
+
+        assertEquals("patient-002", appointment.getPatient());
+        assertEquals("doctor-002", appointment.getDoctor());
+        assertEquals("specialty-002", appointment.getSpecialty());
+        assertEquals(dateTime, appointment.getDateTime());
+        assertEquals("Dolor de cabeza", appointment.getReason());
+        assertEquals(AppointmentStatus.CANCELADA, appointment.getStatus());
+    }
+
 }
