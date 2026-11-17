@@ -9,20 +9,22 @@ public class Paciente {
     private final String correo;
 
     public Paciente(String documento, String nombres, String apellidos, String telefono, String correo) {
-        if (documento == null) {
-            throw new IllegalArgumentException("El DNI no puede ser nulo");
+        this.documento = requireAndTrim(documento, "El DNI no puede ser nulo");
+        this.nombres = requireAndTrim(nombres, "Los nombres no pueden ser nulos");
+        this.apellidos = requireAndTrim(apellidos, "Los apellidos no pueden ser nulos");
+        this.telefono = trimOrNull(telefono);
+        this.correo = trimOrNull(correo);
+    }
+
+    private String requireAndTrim(String value, String errorMessage) {
+        if (value == null) {
+            throw new IllegalArgumentException(errorMessage);
         }
-        if (nombres == null) {
-            throw new IllegalArgumentException("Los nombres no pueden ser nulos");
-        }
-        if (apellidos == null) {
-            throw new IllegalArgumentException("Los apellidos no pueden ser nulos");
-        }
-        this.documento = documento.trim();
-        this.nombres = nombres.trim();
-        this.apellidos = apellidos.trim();
-        this.telefono = telefono != null ? telefono.trim() : null;
-        this.correo = correo != null ? correo.trim() : null;
+        return value.trim();
+    }
+
+    private String trimOrNull(String value) {
+        return value != null ? value.trim() : null;
     }
 
     public String getDocumento() {
