@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.time.LocalDateTime;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 class CitaMedicaTest {
 
@@ -136,8 +137,39 @@ class CitaMedicaTest {
         );
     }
 
+    @Test
+    @DisplayName("Verificar los atributos después de construir el objeto cita médica con dependencias simuladas")
+    void shouldPreserveAllAttributesAfterCreation() {
+        Paciente pacienteMock = mock(Paciente.class);
+        Doctor doctorMock = mock(Doctor.class);
+        Especialidad especialidadMock = mock(Especialidad.class);
 
+        when(pacienteMock.getDocumento()).thenReturn("  6af71e0b501cca046a166049  ");
+        when(doctorMock.getDocumento()).thenReturn("  6af7271e501cca046a16604f  ");
+        when(especialidadMock.getNombre()).thenReturn("  6af71da3501cca046a166045  ");
 
+        LocalDateTime fechaHora = LocalDateTime.of(2026, 11, 25, 9, 15);
 
+        CitaMedica cita = new CitaMedica(
+                pacienteMock.getDocumento(),
+                doctorMock.getDocumento(),
+                especialidadMock.getNombre(),
+                fechaHora,
+                "  Evaluación cardiológica preventiva  ",
+                EstadoCita.PROGRAMADA
+        );
 
+        assertAll(
+                () -> assertEquals("6af71e0b501cca046a166049", cita.getPaciente()),
+                () -> assertEquals("6af7271e501cca046a16604f", cita.getDoctor()),
+                () -> assertEquals("6af71da3501cca046a166045", cita.getEspecialidad()),
+                () -> assertEquals(fechaHora, cita.getFechaHora()),
+                () -> assertEquals("Evaluación cardiológica preventiva", cita.getMotivo()),
+                () -> assertEquals(EstadoCita.PROGRAMADA, cita.getEstado())
+        );
+
+        verify(pacienteMock).getDocumento();
+        verify(doctorMock).getDocumento();
+        verify(especialidadMock).getNombre();
+    }
 }
