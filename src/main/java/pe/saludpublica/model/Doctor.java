@@ -11,7 +11,7 @@ public class Doctor {
     public Doctor(String documento, String nombres, String apellidos, String colegiatura, String especialidad) {
         this.documento = requireNonNullField(documento, "El documento del doctor no puede ser nulo");
         this.nombres = requireNonNullField(nombres, "Los nombres del doctor no pueden ser nulos");
-        this.apellidos = apellidos;
+        this.apellidos = requireNonNullField(apellidos, "Los apellidos del doctor no pueden ser nulos");
         this.colegiatura = colegiatura;
         this.especialidad = especialidad;
     }
