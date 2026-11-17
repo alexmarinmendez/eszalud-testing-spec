@@ -11,6 +11,7 @@ private final String especialidad;
 public Doctor(String documento, String nombres, String apellidos, String colegiatura, String especialidad) {
     validarDocumento(documento);
     validarColegiatura(colegiatura);
+    validarNombre(nombres);
     this.documento = documento;
     this.nombres = nombres;
     this.apellidos = apellidos;
@@ -25,6 +26,11 @@ public Doctor(String documento, String nombres, String apellidos, String colegia
     private void validarColegiatura(String colegiatura) {
         if (colegiatura == null) {
             throw new IllegalArgumentException("La colegiatura es obligatoria");
+        }
+    }
+    private void validarNombre(String nombre) {
+    if (nombre == null) {
+        throw new IllegalArgumentException(("El nombre es obligatorio"));
         }
     }
 
