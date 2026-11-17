@@ -14,6 +14,7 @@ public class Appointment {
     public Appointment(String patient, String doctor, String specialty, LocalDateTime dateTime, String reason, AppointmentStatus status) {
         validateRequired(patient, "El paciente de la cita es obligatorio");
         this.patient = patient;
+        validateRequired(doctor, "El doctor de la cita es obligatorio");
         this.doctor = doctor;
         this.specialty = specialty;
         this.dateTime = dateTime;
