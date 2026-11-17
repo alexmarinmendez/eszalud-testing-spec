@@ -75,4 +75,19 @@ class CitaMedicaTest {
         ));
     }
 
+    @Test
+    @DisplayName("Rechazar la creación de una cita médica sin fecha y hora")
+    void shouldRejectAppointmentWithoutDateTime() {
+        assertThrows(IllegalArgumentException.class, () -> new CitaMedica(
+                "6af71e0b501cca046a166049",
+                "6af7271e501cca046a16604f",
+                "6af71da3501cca046a166045",
+                null,
+                "Dolor abdominal",
+                EstadoCita.PROGRAMADA
+        ));
+    }
+
+
+
 }
