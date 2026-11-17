@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -117,5 +118,28 @@ public class CitaMedicaTest {
 
         assertNotNull(cita);
         assertEquals(EstadoCita.ATENDIDA, cita.getEstado());
+    }
+
+    @Test
+    @DisplayName("Debe devolver todos los atributos asignados mediante sus getters tras construir la cita médica")
+    void shouldReturnAssignedAttributesAfterAppointmentConstruction() {
+        LocalDateTime now = LocalDateTime.now();
+        CitaMedica cita = new CitaMedica(
+                "PAC-002",
+                "DOC-002",
+                "ESP-002",
+                now,
+                "Evaluación anual",
+                EstadoCita.CANCELADA
+        );
+
+        assertAll(
+                () -> assertEquals("PAC-002", cita.getPaciente()),
+                () -> assertEquals("DOC-002", cita.getDoctor()),
+                () -> assertEquals("ESP-002", cita.getEspecialidad()),
+                () -> assertEquals(now, cita.getFechaHora()),
+                () -> assertEquals("Evaluación anual", cita.getMotivo()),
+                () -> assertEquals(EstadoCita.CANCELADA, cita.getEstado())
+        );
     }
 }
