@@ -9,17 +9,19 @@ public class Doctor {
     private final String especialidad;
 
     public Doctor(String documento, String nombres, String apellidos, String colegiatura, String especialidad) {
-        if( documento == null ){
-            throw new IllegalArgumentException("El documento es obligatorio");
-        }
-        this.documento = documento;
+
+        this.documento = validateRequiredText(documento, "El documento es obligatorio");
         this.nombres = nombres;
         this.apellidos = apellidos;
-        if( colegiatura == null ){
-            throw new IllegalArgumentException("La colegiatura es obligatoria");
-        }
-        this.colegiatura = colegiatura;
+        this.colegiatura = validateRequiredText(colegiatura, "La colegiatura es obligatoria");
         this.especialidad = especialidad;
+    }
+
+    private String validateRequiredText(String value, String alertMenssage) {
+        if (value == null ) {
+            throw new IllegalArgumentException(alertMenssage);
+        }
+        return value.trim();
     }
 
     public String getDocumento() {
