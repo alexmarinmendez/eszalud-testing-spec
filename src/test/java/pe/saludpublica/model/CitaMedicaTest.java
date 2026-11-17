@@ -1,0 +1,28 @@
+package pe.saludpublica.model;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import java.time.LocalDateTime;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class CitaMedicaTest {
+
+    @Test
+    @DisplayName("Crear una cita médica con datos válidos")
+    void shouldCreateAppointmentWithValidData() {
+        LocalDateTime fecha = LocalDateTime.of(2026, 12, 1, 9, 30);
+
+        CitaMedica cita = new CitaMedica(
+                "P1", "D1", "CARDIOLOGIA", fecha, "Control general", EstadoCita.PROGRAMADA);
+
+        assertNotNull(cita);
+        assertEquals("P1", cita.getPaciente());
+        assertEquals("D1", cita.getDoctor());
+        assertEquals("CARDIOLOGIA", cita.getEspecialidad());
+        assertEquals(fecha, cita.getFechaHora());
+        assertEquals("Control general", cita.getMotivo());
+        assertEquals(EstadoCita.PROGRAMADA, cita.getEstado());
+    }
+}
