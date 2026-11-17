@@ -96,4 +96,20 @@ public class AppointmentTest {
             );
         });
     }
+
+    @Test
+    @DisplayName("Asignar el estado PROGRAMADA cuando el estado recibido es null")
+    void shouldDefaultStatusToProgramadaWhenStatusIsNull() {
+
+        Appointment appointment = new Appointment(
+                "patient-001",
+                "doctor-001",
+                "specialty-001",
+                LocalDateTime.of(2026, 12, 1, 9,30),
+                "Control general",
+                null
+        );
+
+        assertEquals(AppointmentStatus.PROGRAMADA, appointment.getStatus());
+    }
 }
