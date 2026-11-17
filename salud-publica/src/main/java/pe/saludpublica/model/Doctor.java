@@ -11,6 +11,7 @@ public class Doctor {
     public Doctor(String document, String names, String surnames, String licenseNumber, String specialty) {
         validateRequired(document, "El documento del doctor es obligatorio");
         this.document = document;
+        validateRequired(names, "Los nombres del doctor son obligatorio");
         this.names = names;
         this.surnames = surnames;
         this.licenseNumber = licenseNumber;
