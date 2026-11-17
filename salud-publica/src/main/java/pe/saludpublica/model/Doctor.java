@@ -15,6 +15,7 @@ public class Doctor {
         this.names = names;
         validateRequired(surnames, "Los apellidos del doctor son obligatorios");
         this.surnames = surnames;
+        validateRequired(licenseNumber, "La colegiatura del doctor es obligatoria");
         this.licenseNumber = licenseNumber;
         this.specialty = specialty;
     }
