@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class EspecialidadTest {
 
@@ -19,5 +20,14 @@ public class EspecialidadTest {
         assertNotNull(especialidad);
         assertEquals("Cardiología", especialidad.getNombre());
         assertEquals("Especialidad dedicada al corazón y aparato circulatorio", especialidad.getDescripcion());
+    }
+
+    @Test
+    @DisplayName("Debe lanzar IllegalArgumentException cuando el nombre es nulo")
+    void shouldRejectSpecialtyWhenNameIsNull() {
+        assertThrows(IllegalArgumentException.class, () -> new Especialidad(
+                null,
+                "Especialidad sin nombre"
+        ));
     }
 }
