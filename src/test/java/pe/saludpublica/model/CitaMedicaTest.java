@@ -104,5 +104,31 @@ class CitaMedicaTest {
         assertEquals(EstadoCita.PROGRAMADA, cita.getEstado());
     }
 
+    @Test
+    void shouldPreserveValidAppointmentStatus() {
+        CitaMedica cita = new CitaMedica(
+                "PAC001",
+                "DOC001",
+                "ESP001",
+                LocalDateTime.of(2026, 11, 26, 10, 5),
+                "Control medico",
+                EstadoCita.ATENDIDA
+        );
 
+        assertEquals(EstadoCita.ATENDIDA, cita.getEstado());
+    }
+
+    @Test
+    void shouldPreserveCancelledAppointmentStatus() {
+        CitaMedica cita = new CitaMedica(
+                "PAC001",
+                "DOC001",
+                "ESP001",
+                LocalDateTime.of(2026, 11, 26, 10, 5),
+                "Control medico",
+                EstadoCita.CANCELADA
+        );
+
+        assertEquals(EstadoCita.CANCELADA, cita.getEstado());
+    }
 }
