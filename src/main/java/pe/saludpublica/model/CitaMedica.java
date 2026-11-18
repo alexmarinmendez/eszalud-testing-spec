@@ -3,10 +3,10 @@ package pe.saludpublica.model;
 import java.time.LocalDateTime;
 
 public class CitaMedica {
-    private Paciente paciente;
-    private Doctor doctor;
-    private LocalDateTime fechaHora;
-    private EstadoCita estado;
+    private final Paciente paciente;
+    private final Doctor doctor;
+    private final LocalDateTime fechaHora;
+    private final EstadoCita estado;
     public CitaMedica(Paciente paciente, Doctor doctor, LocalDateTime fechaHora) {
         validarPaciente(paciente);
         validarDoctor(doctor);
