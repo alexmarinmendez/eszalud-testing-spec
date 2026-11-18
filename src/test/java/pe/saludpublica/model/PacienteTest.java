@@ -66,4 +66,22 @@ class PacienteTest {
                 )
         );
     }
+
+    @Test
+    void shouldReturnAllPatientAttributes() {
+
+        Paciente paciente = new Paciente(
+                "12345678",
+                "Cristhian",
+                "Cotrina",
+                "987654321",
+                "cristhian@gmail.com"
+        );
+
+        assertEquals("12345678", paciente.getDocumento());
+        assertEquals("Cristhian", paciente.getNombres());
+        assertEquals("Cotrina", paciente.getApellidos());
+        assertEquals("987654321", paciente.getTelefono());
+        assertEquals("cristhian@gmail.com", paciente.getCorreo());
+    }
 }
