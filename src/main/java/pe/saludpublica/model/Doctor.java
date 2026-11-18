@@ -14,6 +14,11 @@ public class Doctor {
             throw new IllegalArgumentException("El documento no puede ser null");
         }
 
+        if (nombres == null) {
+            throw new IllegalArgumentException("Los nombres no pueden ser null");
+        }
+
+
         this.documento = documento;
         this.nombres = nombres;
         this.apellidos = apellidos;

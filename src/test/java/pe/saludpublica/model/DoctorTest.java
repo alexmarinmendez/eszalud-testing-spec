@@ -38,4 +38,19 @@ class DoctorTest {
         );
     }
 
+    @Test
+    void shouldRejectDoctorWithoutNames() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new Doctor(
+                        "12345678",
+                        null,
+                        "Perez",
+                        "CMP12345",
+                        "Cardiologia"
+                )
+        );
+    }
+
+
 }
