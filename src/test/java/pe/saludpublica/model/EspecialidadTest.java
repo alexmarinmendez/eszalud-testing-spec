@@ -29,7 +29,16 @@ class EspecialidadTest {
         );
     }
 
+    @Test
+    void shouldReturnAllSpecialtyAttributes() {
+        Especialidad especialidad = new Especialidad(
+                "Pediatria",
+                "Atencion medica para niños"
+        );
 
+        assertEquals("Pediatria", especialidad.getNombre());
+        assertEquals("Atencion medica para niños", especialidad.getDescripcion());
+    }
 
 
 
