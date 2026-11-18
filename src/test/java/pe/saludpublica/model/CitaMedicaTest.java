@@ -1,0 +1,155 @@
+package pe.saludpublica.model;
+
+import org.junit.jupiter.api.Test;
+
+import java.time.LocalDateTime;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class CitaMedicaTest {
+
+    @Test
+    void shouldCreateAppointmentWithValidData() {
+        CitaMedica cita = new CitaMedica(
+                "PAC001",
+                "DOC001",
+                "ESP001",
+                LocalDateTime.of(2026, 11, 26, 10, 5),
+                "Control medico",
+                EstadoCita.PROGRAMADA
+        );
+
+        assertNotNull(cita);
+        assertEquals("PAC001", cita.getPaciente());
+        assertEquals("DOC001", cita.getDoctor());
+        assertEquals("ESP001", cita.getEspecialidad());
+        assertEquals(
+                LocalDateTime.of(2026, 11, 26, 10, 5),
+                cita.getFechaHora()
+        );
+        assertEquals("Control medico", cita.getMotivo());
+        assertEquals(EstadoCita.PROGRAMADA, cita.getEstado());
+    }
+
+    @Test
+    void shouldRejectAppointmentWithoutPatient() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new CitaMedica(
+                        null,
+                        "DOC001",
+                        "ESP001",
+                        LocalDateTime.of(2026, 11, 26, 10, 5),
+                        "Control medico",
+                        EstadoCita.PROGRAMADA
+                )
+        );
+    }
+
+    @Test
+    void shouldRejectAppointmentWithoutDoctor() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new CitaMedica(
+                        "PAC001",
+                        null,
+                        "ESP001",
+                        LocalDateTime.of(2026, 11, 26, 10, 5),
+                        "Control medico",
+                        EstadoCita.PROGRAMADA
+                )
+        );
+    }
+
+    @Test
+    void shouldRejectAppointmentWithoutSpecialty() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new CitaMedica(
+                        "PAC001",
+                        "DOC001",
+                        null,
+                        LocalDateTime.of(2026, 11, 26, 10, 5),
+                        "Control medico",
+                        EstadoCita.PROGRAMADA
+                )
+        );
+    }
+    @Test
+    void shouldRejectAppointmentWithoutDateTime() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new CitaMedica(
+                        "PAC001",
+                        "DOC001",
+                        "ESP001",
+                        null,
+                        "Control medico",
+                        EstadoCita.PROGRAMADA
+                )
+        );
+    }
+
+    @Test
+    void shouldAssignProgrammedStatusWhenStatusIsNull() {
+        CitaMedica cita = new CitaMedica(
+                "PAC001",
+                "DOC001",
+                "ESP001",
+                LocalDateTime.of(2026, 11, 26, 10, 5),
+                "Control medico",
+                null
+        );
+
+        assertEquals(EstadoCita.PROGRAMADA, cita.getEstado());
+    }
+
+    @Test
+    void shouldPreserveValidAppointmentStatus() {
+        CitaMedica cita = new CitaMedica(
+                "PAC001",
+                "DOC001",
+                "ESP001",
+                LocalDateTime.of(2026, 11, 26, 10, 5),
+                "Control medico",
+                EstadoCita.ATENDIDA
+        );
+
+        assertEquals(EstadoCita.ATENDIDA, cita.getEstado());
+    }
+
+    @Test
+    void shouldPreserveCancelledAppointmentStatus() {
+        CitaMedica cita = new CitaMedica(
+                "PAC001",
+                "DOC001",
+                "ESP001",
+                LocalDateTime.of(2026, 11, 26, 10, 5),
+                "Control medico",
+                EstadoCita.CANCELADA
+        );
+
+        assertEquals(EstadoCita.CANCELADA, cita.getEstado());
+    }
+
+    @Test
+    void shouldReturnAllAppointmentAttributesCorrectly() {
+        LocalDateTime fecha = LocalDateTime.of(2026, 11, 26, 10, 5);
+
+        CitaMedica cita = new CitaMedica(
+                "PAC001",
+                "DOC001",
+                "ESP001",
+                fecha,
+                "Control medico",
+                EstadoCita.PROGRAMADA
+        );
+
+        assertEquals("PAC001", cita.getPaciente());
+        assertEquals("DOC001", cita.getDoctor());
+        assertEquals("ESP001", cita.getEspecialidad());
+        assertEquals(fecha, cita.getFechaHora());
+        assertEquals("Control medico", cita.getMotivo());
+        assertEquals(EstadoCita.PROGRAMADA, cita.getEstado());
+    }
+}
