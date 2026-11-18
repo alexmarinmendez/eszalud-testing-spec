@@ -30,4 +30,19 @@ class CitaMedicaTest {
         assertEquals("Control medico", cita.getMotivo());
         assertEquals(EstadoCita.PROGRAMADA, cita.getEstado());
     }
+
+    @Test
+    void shouldRejectAppointmentWithoutPatient() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new CitaMedica(
+                        null,
+                        "DOC001",
+                        "ESP001",
+                        LocalDateTime.of(2026, 11, 26, 10, 5),
+                        "Control medico",
+                        EstadoCita.PROGRAMADA
+                )
+        );
+    }
 }
