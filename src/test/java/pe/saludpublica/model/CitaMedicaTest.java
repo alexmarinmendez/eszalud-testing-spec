@@ -44,4 +44,14 @@ class CitaMedicaTest {
             new CitaMedica(paciente, doctor, null);
         });
     }
+    @Test
+    void testDefaultAppointmentStatus() {
+        Paciente paciente = new Paciente("12345678", "Carlos", "Jimenez", "987654321", "Carlitos@test.com");
+        Doctor doctor = new Doctor("12345678", "Bianka", "Ataegina", "CMP12345", "Dermatología");
+        LocalDateTime fechaHora = LocalDateTime.of(2026, 8, 27, 10, 30);
+
+        CitaMedica cita = new CitaMedica(paciente, doctor, fechaHora);
+
+        assertEquals(EstadoCita.PROGRAMADA, cita.getEstado());
+    }
 }
