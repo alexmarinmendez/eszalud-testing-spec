@@ -3,6 +3,8 @@ package pe.saludpublica.model;
 import java.time.LocalDateTime;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -72,5 +74,17 @@ class CitaMedicaTest {
         assertThrows(IllegalArgumentException.class, () -> new CitaMedica(
                 "paciente-1", "doctor-1", "especialidad-1", fechaHora,
                 "Consulta general", null));
+    }
+
+    @ParameterizedTest
+    @EnumSource(EstadoCita.class)
+    @DisplayName("Conservar el estado válido recibido al crear una cita médica")
+    void shouldPreserveValidAppointmentStatus(EstadoCita estado) {
+        LocalDateTime fechaHora = LocalDateTime.of(2027, 1, 15, 10, 30);
+        CitaMedica cita = new CitaMedica(
+                "paciente-1", "doctor-1", "especialidad-1", fechaHora,
+                "Consulta general", estado);
+
+        assertEquals(estado, cita.getEstado());
     }
 }
