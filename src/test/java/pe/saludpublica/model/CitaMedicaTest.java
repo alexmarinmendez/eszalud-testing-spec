@@ -131,4 +131,25 @@ class CitaMedicaTest {
 
         assertEquals(EstadoCita.CANCELADA, cita.getEstado());
     }
+
+    @Test
+    void shouldReturnAllAppointmentAttributesCorrectly() {
+        LocalDateTime fecha = LocalDateTime.of(2026, 11, 26, 10, 5);
+
+        CitaMedica cita = new CitaMedica(
+                "PAC001",
+                "DOC001",
+                "ESP001",
+                fecha,
+                "Control medico",
+                EstadoCita.PROGRAMADA
+        );
+
+        assertEquals("PAC001", cita.getPaciente());
+        assertEquals("DOC001", cita.getDoctor());
+        assertEquals("ESP001", cita.getEspecialidad());
+        assertEquals(fecha, cita.getFechaHora());
+        assertEquals("Control medico", cita.getMotivo());
+        assertEquals(EstadoCita.PROGRAMADA, cita.getEstado());
+    }
 }
