@@ -1,4 +1,6 @@
 package pe.saludpublica.model;
+
 public class Especialidad {
-    public Especialidad(String n, String d) {}
+    private String nombre, descripcion;
+    public Especialidad(String nombre, String descripcion) { this.nombre = nombre; this.descripcion = descripcion; }
 }
