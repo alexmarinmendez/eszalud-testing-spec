@@ -17,4 +17,20 @@ class EspecialidadTest {
         assertEquals("Cardiologia", especialidad.getNombre());
         assertEquals("Especialidad del corazón", especialidad.getDescripcion());
     }
+
+    @Test
+    void shouldRejectSpecialtyWithoutName() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new Especialidad(
+                        null,
+                        "Especialidad del corazón"
+                )
+        );
+    }
+
+
+
+
+
 }
