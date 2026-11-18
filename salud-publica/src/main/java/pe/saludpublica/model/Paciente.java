@@ -10,20 +10,18 @@ public class Paciente {
 
     public Paciente(String documento, String nombres, String apellidos,
                     String telefono, String correo) {
-        if (documento == null) {
-            throw new IllegalArgumentException("El documento del paciente es obligatorio");
-        }
-        if (nombres == null) {
-            throw new IllegalArgumentException("Los nombres del paciente son obligatorios");
-        }
-        if (apellidos == null) {
-            throw new IllegalArgumentException("Los apellidos del paciente son obligatorios");
-        }
-        this.documento = documento;
-        this.nombres = nombres;
-        this.apellidos = apellidos;
+        this.documento = requireValue(documento, "El documento del paciente es obligatorio");
+        this.nombres = requireValue(nombres, "Los nombres del paciente son obligatorios");
+        this.apellidos = requireValue(apellidos, "Los apellidos del paciente son obligatorios");
         this.telefono = telefono;
         this.correo = correo;
+    }
+
+    private static String requireValue(String value, String message) {
+        if (value == null) {
+            throw new IllegalArgumentException(message);
+        }
+        return value;
     }
 
     public String getDocumento() {
