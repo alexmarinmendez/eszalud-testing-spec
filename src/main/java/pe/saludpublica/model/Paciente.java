@@ -15,9 +15,7 @@ public class Paciente {
             throw new IllegalArgumentException("El documento no puede ser null");
         }
 
-        if (nombres == null) {
-            throw new IllegalArgumentException("Los nombres no pueden ser null");
-        }
+
 
         if (apellidos == null) {
             throw new IllegalArgumentException("Los apellidos no pueden ser null");

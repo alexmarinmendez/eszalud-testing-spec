@@ -38,4 +38,18 @@ class PacienteTest {
                 )
         );
     }
+    @Test
+    void shouldRejectPatientWithoutNames() {
+
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new Paciente(
+                        "12345678",
+                        null,
+                        "Cotrina",
+                        "987654321",
+                        "cristhian@gmail.com"
+                )
+        );
+    }
 }
