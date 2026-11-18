@@ -11,7 +11,9 @@ public class Paciente {
     public Paciente(String documento, String nombres,
                     String apellidos, String telefono, String correo) {
 
-
+        if (documento == null) {
+            throw new IllegalArgumentException("El documento no puede ser null");
+        }
 
         if (nombres == null) {
             throw new IllegalArgumentException("Los nombres no pueden ser null");
