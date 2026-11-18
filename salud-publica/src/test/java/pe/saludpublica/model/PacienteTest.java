@@ -3,6 +3,7 @@ package pe.saludpublica.model;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -75,6 +76,27 @@ class PacienteTest {
                         "987654321",
                         "ana@mail.com"
                 )
+        );
+    }
+
+    // PAC-005
+    @Test
+    @DisplayName("Verificar que cada atributo conserve su valor después de construir el paciente")
+    void shouldKeepEachAttributeWhenPatientIsCreated() {
+        Paciente paciente = new Paciente(
+                "87654321",
+                "Luis Alberto",
+                "Gómez Torres",
+                "912345678",
+                "luis.gomez@mail.com"
+        );
+
+        assertAll(
+                () -> assertEquals("87654321", paciente.getDocumento(), "documento"),
+                () -> assertEquals("Luis Alberto", paciente.getNombres(), "nombres"),
+                () -> assertEquals("Gómez Torres", paciente.getApellidos(), "apellidos"),
+                () -> assertEquals("912345678", paciente.getTelefono(), "telefono"),
+                () -> assertEquals("luis.gomez@mail.com", paciente.getCorreo(), "correo")
         );
     }
 }
