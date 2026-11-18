@@ -66,5 +66,19 @@ class DoctorTest {
         );
     }
 
+    @Test
+    void shouldRejectDoctorWithoutTuition() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new Doctor(
+                        "12345678",
+                        "Juan",
+                        "Perez",
+                        null,
+                        "Cardiologia"
+                )
+        );
+    }
+
 
 }
