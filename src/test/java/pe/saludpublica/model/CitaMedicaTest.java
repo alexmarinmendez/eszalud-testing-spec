@@ -35,4 +35,13 @@ class CitaMedicaTest {
             new CitaMedica(paciente, null, fechaHora);
         });
     }
+    @Test
+    void testRequiredAppointmentDateValidation() {
+        Paciente paciente = new Paciente("12345678", "Carlos", "Jimenez", "987654321", "Carlitos@test.com");
+        Doctor doctor = new Doctor("12345678", "Bianka", "Ataegina", "CMP12345", "Dermatología");
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new CitaMedica(paciente, doctor, null);
+        });
+    }
 }
