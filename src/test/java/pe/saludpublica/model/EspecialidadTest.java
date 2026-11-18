@@ -11,4 +11,10 @@ class EspecialidadTest {
         assertEquals("ESP01", especialidad.getCodigo());
         assertEquals("Neumologia", especialidad.getNombre());
     }
+    @Test
+    void testRequiredNameValidation() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Especialidad("ESP01", null);
+        });
+    }
 }
