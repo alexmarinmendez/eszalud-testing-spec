@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="salud-publica-all">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/reference-app/salud-publica-all.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
