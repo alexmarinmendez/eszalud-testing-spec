@@ -45,4 +45,19 @@ class CitaMedicaTest {
                 )
         );
     }
+
+    @Test
+    void shouldRejectAppointmentWithoutDoctor() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new CitaMedica(
+                        "PAC001",
+                        null,
+                        "ESP001",
+                        LocalDateTime.of(2026, 11, 26, 10, 5),
+                        "Control medico",
+                        EstadoCita.PROGRAMADA
+                )
+        );
+    }
 }
