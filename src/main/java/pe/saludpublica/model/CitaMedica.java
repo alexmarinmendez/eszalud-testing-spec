@@ -10,6 +10,7 @@ public class CitaMedica {
     public CitaMedica(Paciente paciente, Doctor doctor, LocalDateTime fechaHora) {
         validarPaciente(paciente);
         validarDoctor(doctor);
+        validarFechaHora(fechaHora);
         this.paciente = paciente;
         this.doctor = doctor;
         this.fechaHora = fechaHora;
@@ -22,6 +23,11 @@ public class CitaMedica {
     private void validarDoctor(Doctor doctor) {
         if (doctor == null) {
             throw new IllegalArgumentException("El doctor es obligatorio");
+        }
+    }
+    private void validarFechaHora(LocalDateTime fechaHora) {
+        if (fechaHora == null) {
+            throw new IllegalArgumentException("La fecha y hora son obligatorias");
         }
     }
 
