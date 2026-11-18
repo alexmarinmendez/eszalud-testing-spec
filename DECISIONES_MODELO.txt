@@ -1,0 +1,10 @@
+DECISIONES DE LOS MODELOS
+
+Las referencias a paciente, doctor y especialidad se representan con String.
+Son identificadores; estos modelos no consultan MongoDB.
+La fecha y hora de una cita se representa con LocalDateTime.
+El estado usa EstadoCita: PROGRAMADA, ATENDIDA y CANCELADA.
+Para CIT-006 se rechaza estado null con IllegalArgumentException; no se
+asigna PROGRAMADA automaticamente.
+No se agregan restricciones de formato, longitud o fechas que no esten
+definidas en los casos obligatorios de la especificacion.
