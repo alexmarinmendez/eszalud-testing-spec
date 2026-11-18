@@ -5,10 +5,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @DisplayName("Pruebas del modelo Paciente")
 class PacienteTest {
 
+    // PAC-001
     @Test
     @DisplayName("Crear un paciente con datos válidos")
     void shouldCreatePatientWithValidData() {
@@ -26,5 +28,21 @@ class PacienteTest {
         assertEquals("Pérez", paciente.getApellidos());
         assertEquals("987654321", paciente.getTelefono());
         assertEquals("ana@mail.com", paciente.getCorreo());
+    }
+
+    // PAC-002
+    @Test
+    @DisplayName("Rechazar la creación de un paciente sin documento")
+    void shouldRejectPatientWithoutDocument() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new Paciente(
+                        null,
+                        "Ana",
+                        "Pérez",
+                        "987654321",
+                        "ana@mail.com"
+                )
+        );
     }
 }
