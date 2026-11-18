@@ -89,4 +89,20 @@ class CitaMedicaTest {
                 )
         );
     }
+
+    @Test
+    void shouldAssignProgrammedStatusWhenStatusIsNull() {
+        CitaMedica cita = new CitaMedica(
+                "PAC001",
+                "DOC001",
+                "ESP001",
+                LocalDateTime.of(2026, 11, 26, 10, 5),
+                "Control medico",
+                null
+        );
+
+        assertEquals(EstadoCita.PROGRAMADA, cita.getEstado());
+    }
+
+
 }
