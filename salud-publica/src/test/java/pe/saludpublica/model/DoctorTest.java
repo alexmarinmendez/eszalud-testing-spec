@@ -3,6 +3,7 @@ package pe.saludpublica.model;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -91,6 +92,27 @@ class DoctorTest {
                         null,
                         "esp-001"
                 )
+        );
+    }
+
+    // DOC-006
+    @Test
+    @DisplayName("Verificar que cada atributo conserve su valor después de construir el doctor")
+    void shouldKeepEachAttributeWhenDoctorIsCreated() {
+        Doctor doctor = new Doctor(
+                "71234567",
+                "María Elena",
+                "Quispe Huamán",
+                "CMP-98765",
+                "esp-003"
+        );
+
+        assertAll(
+                () -> assertEquals("71234567", doctor.getDocumento(), "documento"),
+                () -> assertEquals("María Elena", doctor.getNombres(), "nombres"),
+                () -> assertEquals("Quispe Huamán", doctor.getApellidos(), "apellidos"),
+                () -> assertEquals("CMP-98765", doctor.getColegiatura(), "colegiatura"),
+                () -> assertEquals("esp-003", doctor.getEspecialidad(), "especialidad")
         );
     }
 }
