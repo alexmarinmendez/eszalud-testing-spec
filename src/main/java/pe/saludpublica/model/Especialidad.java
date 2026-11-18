@@ -1,8 +1,8 @@
 package pe.saludpublica.model;
 
 public class Especialidad {
-    private String codigo;
-    private String nombre;
+    private final String codigo;
+    private final String nombre;
 
     public Especialidad(String codigo, String nombre) {
         validarNombre(nombre);
