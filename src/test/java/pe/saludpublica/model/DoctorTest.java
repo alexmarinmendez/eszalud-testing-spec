@@ -80,5 +80,22 @@ class DoctorTest {
         );
     }
 
+    @Test
+    void shouldReturnAllDoctorAttributes() {
+        Doctor doctor = new Doctor(
+                "87654321",
+                "Maria",
+                "Lopez",
+                "CMP98765",
+                "Pediatria"
+        );
+
+        assertEquals("87654321", doctor.getDocumento());
+        assertEquals("Maria", doctor.getNombres());
+        assertEquals("Lopez", doctor.getApellidos());
+        assertEquals("CMP98765", doctor.getColegiatura());
+        assertEquals("Pediatria", doctor.getEspecialidad());
+    }
+
 
 }
