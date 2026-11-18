@@ -19,7 +19,7 @@ public class Paciente {
     }
 
     private void validarDocumento(String documento) {
-        if (documento == null) {
+        if (documento == null || documento.trim().isEmpty()) {
             throw new IllegalArgumentException("El documento es obligatorio");
         }
     }

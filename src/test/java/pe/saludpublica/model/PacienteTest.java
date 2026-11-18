@@ -36,4 +36,10 @@ public class PacienteTest {
             new Paciente("73123456", "Carlos", null, "987654321", "Carlitos@test.com");
         });
     }
+    @Test
+    void testEmptyDocumentValidation() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Paciente("", "Carlos", "Jimenez", "987654321", "Carlitos@test.com");
+        });
+    }
 }
