@@ -87,4 +87,20 @@ class CitaMedicaTest {
 
         assertEquals(estado, cita.getEstado());
     }
+
+    @Test
+    @DisplayName("Conservar los atributos de una cita médica después de construirla")
+    void shouldReturnAppointmentAttributesAfterConstruction() {
+        LocalDateTime fechaHora = LocalDateTime.of(2027, 2, 20, 15, 45);
+        CitaMedica cita = new CitaMedica(
+                "paciente-2", "doctor-2", "especialidad-2", fechaHora,
+                "Control médico", EstadoCita.ATENDIDA);
+
+        assertEquals("paciente-2", cita.getPaciente());
+        assertEquals("doctor-2", cita.getDoctor());
+        assertEquals("especialidad-2", cita.getEspecialidad());
+        assertEquals(fechaHora, cita.getFechaHora());
+        assertEquals("Control médico", cita.getMotivo());
+        assertEquals(EstadoCita.ATENDIDA, cita.getEstado());
+    }
 }
