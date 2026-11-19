@@ -4,9 +4,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CitaMedicaTest {
 
@@ -79,5 +79,21 @@ public class CitaMedicaTest {
                     "PROGRAMADA"
             );
         });
+    }
+
+    @Test
+    @DisplayName("Verificar que existan los estados de una cita médica")
+    void shouldHaveValidAppointmentStatusValues() throws ClassNotFoundException {
+
+        Class<?> estadoClass = Class.forName("pe.saludpublica.model.EstadoCita");
+        assertTrue(estadoClass.isEnum());
+        Object[] estados = estadoClass.getEnumConstants();
+
+        assertArrayEquals(
+                new String[]{"PROGRAMADA", "ATENDIDA", "CANCELADA"},
+                Arrays.stream(estados)
+                        .map(Object::toString)
+                        .toArray(String[]::new)
+        );
     }
 }
