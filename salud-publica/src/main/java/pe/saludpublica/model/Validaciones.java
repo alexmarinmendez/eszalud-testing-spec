@@ -12,7 +12,7 @@ final class Validaciones {
         if (value == null) {
             throw new IllegalArgumentException(message);
         }
-        if (value instanceof String text && text.isEmpty()) {
+        if (value instanceof String text && text.isBlank()) {
             throw new IllegalArgumentException(message);
         }
         return value;
