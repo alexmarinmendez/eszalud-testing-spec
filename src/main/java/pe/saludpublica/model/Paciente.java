@@ -13,6 +13,10 @@ public class Paciente {
             throw new IllegalArgumentException("Document is required");
         }
 
+        if (nombres == null) {
+            throw new IllegalArgumentException("Names are required");
+        }
+
         this.documento = documento;
         this.nombres = nombres;
         this.apellidos = apellidos;
