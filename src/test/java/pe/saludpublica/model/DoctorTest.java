@@ -67,4 +67,17 @@ class DoctorTest {
                 )
         );
     }
+
+    @Test
+    void doc005_throwsExceptionWhenMedicalLicenseIsNull() {
+        assertThrows(IllegalArgumentException.class, () ->
+                new Doctor(
+                        "45678912",
+                        "Carlos Eduardo",
+                        "Ramírez Torres",
+                        null,
+                        "Cardiología"
+                )
+        );
+    }
 }
