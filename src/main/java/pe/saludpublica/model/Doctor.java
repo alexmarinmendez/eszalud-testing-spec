@@ -15,9 +15,13 @@ public class Doctor {
         }
         this.documento = documento;
 
+        if (colegiatura == null) {
+            throw new IllegalArgumentException("La colegiatura del doctor es obligatoria");
+        }
+        this.colegiatura = colegiatura;
+
         this.nombres = nombres;
         this.apellidos = apellidos;
-        this.colegiatura = colegiatura;
         this.especialidadId = especialidadId;
     }
 
