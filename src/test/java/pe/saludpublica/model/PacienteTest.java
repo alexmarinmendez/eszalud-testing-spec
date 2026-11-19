@@ -1,4 +1,3 @@
-
 package pe.saludpublica.model;
 
 import org.junit.jupiter.api.DisplayName;
