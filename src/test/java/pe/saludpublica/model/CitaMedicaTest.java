@@ -91,4 +91,32 @@ class CitaMedicaTest {
                 )
         );
     }
+
+    @Test
+    @DisplayName("Asignar estado PROGRAMADA por defecto cuando es null")
+    void shouldSetDefaultStatusWhenNull() {
+        CitaMedica cita = new CitaMedica(
+                "PAC-123",
+                "DOC-456",
+                "ESP-001",
+                "2026-11-20 10:00",
+                "Consulta general",
+                null
+        );
+        assertEquals("PROGRAMADA", cita.getEstado());
+    }
+
+    @Test
+    @DisplayName("Conservar el estado cuando es un valor válido")
+    void shouldKeepValidStatus() {
+        CitaMedica cita = new CitaMedica(
+                "PAC-123",
+                "DOC-456",
+                "ESP-001",
+                "2026-11-20 10:00",
+                "Consulta general",
+                "ATENDIDA"
+        );
+        assertEquals("ATENDIDA", cita.getEstado());
+    }
 }
