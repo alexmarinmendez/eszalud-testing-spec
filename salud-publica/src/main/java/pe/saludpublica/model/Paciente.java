@@ -9,6 +9,15 @@ public class Paciente {
     private final String correo;
 
     public Paciente(String documento, String nombres, String apellidos, String telefono, String correo) {
+        if (documento == null || documento.isBlank()) {
+            throw new IllegalArgumentException("Ingrese el documento del paciente");
+        }
+        if (nombres == null || nombres.isBlank()) {
+            throw new IllegalArgumentException("Ingrese los nombres del paciente");
+        }
+        if (apellidos == null || apellidos.isBlank()) {
+            throw new IllegalArgumentException("Ingrese los apellidos del paciente");
+        }
         this.documento = documento;
         this.nombres = nombres;
         this.apellidos = apellidos;
