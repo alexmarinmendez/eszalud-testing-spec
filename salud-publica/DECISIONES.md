@@ -9,6 +9,7 @@ las pruebas que dependen de ellas (sección 8 de la EFP).
 | Teléfono | Opcional. No se valida formato ni longitud. | No existe una regla de negocio que defina su formato. |
 | Correo | Opcional (se acepta `null`). Si se informa, debe tener un formato básico `usuario@dominio`. | Es un dato de contacto, no de identificación. Un correo mal escrito no sirve para contactar al paciente. |
 | Colegiatura | Obligatoria. Se rechaza `null`, vacía o solo espacios. No se restringe formato ni longitud. | Acredita al profesional. No existe una regla que fije su formato. |
+| Especialidad del doctor | Obligatoria. Se rechaza `null`, vacía o solo espacios. | Todo doctor atiende en una especialidad y las citas se registran por especialidad. |
 | Descripción de especialidad | Opcional (se acepta `null` o vacía). | El nombre identifica la especialidad; la descripción es informativa. |
 | Motivo de la cita | Opcional. No se fija longitud máxima. | No existe una regla de negocio que lo exija ni que limite su longitud. |
 | Fecha de la cita | Obligatoria. Se permiten fechas pasadas. | Las citas con estado ATENDIDA tienen fechas pasadas; rechazarlas impediría representar el historial. |
