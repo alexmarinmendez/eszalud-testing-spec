@@ -119,4 +119,26 @@ class CitaMedicaTest {
 
         assertEquals(EstadoCita.ATENDIDA, cita.getEstado());
     }
+
+    @Test
+    void cit008_returnsValuesThroughGettersAfterConstruction() {
+        LocalDateTime fechaHora = LocalDateTime.of(2026, 12, 2, 14, 15);
+        CitaMedica cita = new CitaMedica(
+                "PAC-002",
+                "DOC-002",
+                "ESP-002",
+                fechaHora,
+                "Evaluación de seguimiento",
+                EstadoCita.CANCELADA
+        );
+
+        assertAll(
+                () -> assertEquals("PAC-002", cita.getPacienteId()),
+                () -> assertEquals("DOC-002", cita.getDoctorId()),
+                () -> assertEquals("ESP-002", cita.getEspecialidadId()),
+                () -> assertEquals(fechaHora, cita.getFechaHora()),
+                () -> assertEquals("Evaluación de seguimiento", cita.getMotivo()),
+                () -> assertEquals(EstadoCita.CANCELADA, cita.getEstado())
+        );
+    }
 }
