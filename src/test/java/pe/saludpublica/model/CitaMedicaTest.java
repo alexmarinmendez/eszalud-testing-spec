@@ -48,4 +48,21 @@ public class CitaMedicaTest {
             );
         });
     }
+
+    @Test
+    @DisplayName("Rechazar cita médica sin doctor")
+    void shouldThrowExceptionWhenDoctorIdIsNull() {
+        LocalDateTime fechaHora = LocalDateTime.of(2026, 12, 10, 10, 30);
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new CitaMedica(
+                    "PAC001",
+                    null,
+                    "ESP001",
+                    fechaHora,
+                    "Dolor de cabeza",
+                    "PROGRAMADA"
+            );
+        });
+    }
 }
