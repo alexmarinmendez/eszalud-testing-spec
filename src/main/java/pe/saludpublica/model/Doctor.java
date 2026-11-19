@@ -8,6 +8,9 @@ public class Doctor {
     private String especialidad;
 
     public Doctor(String documento, String nombres, String apellidos, String colegiatura, String especialidad) {
+        if (documento == null) {
+            throw new IllegalArgumentException("El documento no puede ser nulo");
+        }
         this.documento = documento;
         this.nombres = nombres;
         this.apellidos = apellidos;
