@@ -69,4 +69,23 @@ class PacienteTest {
         );
     }
 
+    @Test
+    void pac005_returnsValuesThroughGettersAfterConstruction() {
+        Paciente paciente = new Paciente(
+                "12345678",
+                "Luis Alberto",
+                "Gómez Díaz",
+                "912345678",
+                "luis.gomez@email.com"
+        );
+
+        assertAll(
+                () -> assertEquals("12345678", paciente.getDocumento()),
+                () -> assertEquals("Luis Alberto", paciente.getNombres()),
+                () -> assertEquals("Gómez Díaz", paciente.getApellidos()),
+                () -> assertEquals("912345678", paciente.getTelefono()),
+                () -> assertEquals("luis.gomez@email.com", paciente.getCorreo())
+        );
+    }
+
 }
