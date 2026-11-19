@@ -31,6 +31,10 @@ public class CitaMedica {
             throw new IllegalArgumentException("Specialty identifier is required");
         }
 
+        if (fechaHora == null) {
+            throw new IllegalArgumentException("Appointment date time is required");
+        }
+
         this.pacienteId = pacienteId;
         this.doctorId = doctorId;
         this.especialidadId = especialidadId;
