@@ -115,4 +115,20 @@ class PacienteTest {
                 )
         );
     }
+
+    // PAC-007 (recomendada)
+    @Test
+    @DisplayName("Rechazar la creación de un paciente con documento compuesto solo por espacios")
+    void shouldRejectPatientWithBlankDocument() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new Paciente(
+                        "   ",
+                        "Ana",
+                        "Pérez",
+                        "987654321",
+                        "ana@mail.com"
+                )
+        );
+    }
 }
