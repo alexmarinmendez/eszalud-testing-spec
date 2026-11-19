@@ -22,4 +22,11 @@ class EspecialidadTest {
         assertEquals("Pediatría", especialidad.getNombre());
         assertEquals("Atención de niños", especialidad.getDescripcion());
     }
+
+    @Test
+    @DisplayName("Rechazar la creación de una especialidad sin nombre")
+    void shouldRejectSpecialtyWithoutName() {
+        assertThrows(IllegalArgumentException.class,
+            () -> new Especialidad(null, "Enfermedades del corazón"));
+    }
 }
