@@ -63,4 +63,18 @@ class CitaMedicaTest {
                 )
         );
     }
+
+    @Test
+    void cit004_throwsExceptionWhenSpecialtyIdIsNull() {
+        assertThrows(IllegalArgumentException.class, () ->
+                new CitaMedica(
+                        "PAC-001",
+                        "DOC-001",
+                        null,
+                        FECHA_HORA,
+                        "Consulta de control",
+                        EstadoCita.PROGRAMADA
+                )
+        );
+    }
 }
