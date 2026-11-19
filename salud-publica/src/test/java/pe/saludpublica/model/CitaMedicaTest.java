@@ -2,6 +2,8 @@ package pe.saludpublica.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
 
 import java.time.DateTimeException;
 import java.time.LocalDateTime;
@@ -212,6 +214,33 @@ class CitaMedicaTest {
         );
 
         assertEquals(fechaPasada, cita.getFechaHora());
+    }
+
+    // CIT-012, CIT-013 y CIT-014 (recomendadas)
+    @ParameterizedTest(name = "Conservar el estado {0}")
+    @EnumSource(EstadoCita.class)
+    @DisplayName("Conservar cada estado válido recibido al crear la cita")
+    void shouldKeepEachStatusWhenAppointmentIsCreated(EstadoCita estado) {
+        CitaMedica cita = new CitaMedica(
+                "pac-001",
+                "doc-001",
+                "esp-001",
+                LocalDateTime.of(2026, 12, 15, 9, 30),
+                "Control de presión arterial",
+                estado
+        );
+
+        assertEquals(estado, cita.getEstado());
+    }
+
+    // CIT-015 (recomendada)
+    @Test
+    @DisplayName("Rechazar un estado de cita no reconocido")
+    void shouldRejectUnrecognizedAppointmentStatus() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> EstadoCita.valueOf("PENDIENTE")
+        );
     }
 
     // CIT-016 (recomendada, regla documentada en DECISIONES.md)
