@@ -4,6 +4,13 @@ import java.time.LocalDateTime;
 
 public class CitaMedica {
 
+    private final String pacienteId;
+    private final String doctorId;
+    private final String especialidadId;
+    private final LocalDateTime fechaHora;
+    private final String motivo;
+    private final EstadoCita estado;
+
     public CitaMedica(
             String pacienteId,
             String doctorId,
@@ -12,29 +19,35 @@ public class CitaMedica {
             String motivo,
             EstadoCita estado
     ) {
+        this.pacienteId = pacienteId;
+        this.doctorId = doctorId;
+        this.especialidadId = especialidadId;
+        this.fechaHora = fechaHora;
+        this.motivo = motivo;
+        this.estado = estado;
     }
 
     public String getPacienteId() {
-        return null;
+        return pacienteId;
     }
 
     public String getDoctorId() {
-        return null;
+        return doctorId;
     }
 
     public String getEspecialidadId() {
-        return null;
+        return especialidadId;
     }
 
     public LocalDateTime getFechaHora() {
-        return null;
+        return fechaHora;
     }
 
     public String getMotivo() {
-        return null;
+        return motivo;
     }
 
     public EstadoCita getEstado() {
-        return null;
+        return estado;
     }
 }
