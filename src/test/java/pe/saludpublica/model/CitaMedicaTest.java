@@ -91,4 +91,18 @@ class CitaMedicaTest {
                 )
         );
     }
+
+    @Test
+    void cit006_assignsScheduledStatusWhenStatusIsNull() {
+        CitaMedica cita = new CitaMedica(
+                "PAC-001",
+                "DOC-001",
+                "ESP-001",
+                FECHA_HORA,
+                "Consulta de control",
+                null
+        );
+
+        assertEquals(EstadoCita.PROGRAMADA, cita.getEstado());
+    }
 }
