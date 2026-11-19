@@ -3,6 +3,7 @@ package pe.saludpublica.model;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.time.DateTimeException;
 import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -160,5 +161,72 @@ class CitaMedicaTest {
                 () -> assertEquals("Evaluación pediátrica de rutina", cita.getMotivo(), "motivo"),
                 () -> assertEquals(EstadoCita.CANCELADA, cita.getEstado(), "estado")
         );
+    }
+
+    // CIT-009 (recomendada, regla documentada en DECISIONES.md)
+    @Test
+    @DisplayName("Aceptar una cita con motivo vacío porque el motivo es opcional")
+    void shouldAcceptAppointmentWithEmptyReasonWhenReasonIsOptional() {
+        CitaMedica cita = new CitaMedica(
+                "pac-001",
+                "doc-001",
+                "esp-001",
+                LocalDateTime.of(2026, 12, 15, 9, 30),
+                "",
+                EstadoCita.PROGRAMADA
+        );
+
+        assertEquals("", cita.getMotivo());
+    }
+
+    // CIT-010 (recomendada)
+    @Test
+    @DisplayName("Rechazar una fecha y hora inválidas antes de crear la cita")
+    void shouldRejectInvalidDateTimeBeforeCreatingAppointment() {
+        assertThrows(
+                DateTimeException.class,
+                () -> new CitaMedica(
+                        "pac-001",
+                        "doc-001",
+                        "esp-001",
+                        LocalDateTime.of(2026, 2, 30, 10, 0),
+                        "Control de presión arterial",
+                        EstadoCita.PROGRAMADA
+                )
+        );
+    }
+
+    // CIT-011 (recomendada, regla documentada en DECISIONES.md)
+    @Test
+    @DisplayName("Aceptar una cita con fecha pasada porque se permite registrar el historial")
+    void shouldAcceptAppointmentWithPastDateWhenHistoryIsAllowed() {
+        LocalDateTime fechaPasada = LocalDateTime.of(2020, 3, 10, 8, 0);
+
+        CitaMedica cita = new CitaMedica(
+                "pac-001",
+                "doc-001",
+                "esp-001",
+                fechaPasada,
+                "Control anual",
+                EstadoCita.ATENDIDA
+        );
+
+        assertEquals(fechaPasada, cita.getFechaHora());
+    }
+
+    // CIT-016 (recomendada, regla documentada en DECISIONES.md)
+    @Test
+    @DisplayName("Aceptar una cita con motivo compuesto solo por espacios porque el motivo es opcional")
+    void shouldAcceptAppointmentWithBlankReasonWhenReasonIsOptional() {
+        CitaMedica cita = new CitaMedica(
+                "pac-001",
+                "doc-001",
+                "esp-001",
+                LocalDateTime.of(2026, 12, 15, 9, 30),
+                "   ",
+                EstadoCita.PROGRAMADA
+        );
+
+        assertEquals("   ", cita.getMotivo());
     }
 }
