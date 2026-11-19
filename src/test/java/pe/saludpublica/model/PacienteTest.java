@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PacienteTest {
 
@@ -25,4 +26,27 @@ public class PacienteTest {
         assertEquals("987654321", paciente.getTelefono());
         assertEquals("paciente@gmail.com", paciente.getCorreo());
     }
+
+    @Test
+    @DisplayName("Rechazar paciente con documento nulo")
+    void shouldThrowExceptionWhenDocumentIsNull() {
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Paciente(
+                    null,
+                    "Gianello",
+                    "Orbegozo",
+                    "987654321",
+                    "paciente@gmail.com"
+            );
+        });
+    }
+
+
+
+
+
+
+
+
 }
