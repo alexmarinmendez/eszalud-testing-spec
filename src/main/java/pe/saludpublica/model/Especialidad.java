@@ -7,6 +7,11 @@ public class Especialidad {
     private String descripcion;
 
     public Especialidad(String nombre, String descripcion) {
+
+        if (nombre == null) {
+            throw new IllegalArgumentException("El nombre no puede ser nulo");
+        }
+
         this.nombre = nombre;
         this.descripcion = descripcion;
     }

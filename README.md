@@ -150,3 +150,7 @@ Este documento contiene los casos de prueba, los criterios de aceptaciÃ³n y las 
 ---
 
 **EsZalud â€“ AplicaciÃ³n de referencia para el desarrollo de pruebas unitarias mediante TDD.**
+
+### Decisión de diseño: CIT-006
+
+Se decidió rechazar un estado nulo en CitaMedica mediante IllegalArgumentException. Una cita debe crearse con un estado explícito, por lo que no se asigna automáticamente PROGRAMADA.
