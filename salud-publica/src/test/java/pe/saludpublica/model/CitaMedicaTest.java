@@ -119,4 +119,20 @@ class CitaMedicaTest {
 
         assertEquals(EstadoCita.PROGRAMADA, cita.getEstado());
     }
+
+    // CIT-007
+    @Test
+    @DisplayName("Conservar el estado válido recibido al crear la cita")
+    void shouldKeepValidStatusWhenAppointmentIsCreated() {
+        CitaMedica cita = new CitaMedica(
+                "pac-001",
+                "doc-001",
+                "esp-001",
+                LocalDateTime.of(2026, 11, 10, 16, 0),
+                "Control de presión arterial",
+                EstadoCita.ATENDIDA
+        );
+
+        assertEquals(EstadoCita.ATENDIDA, cita.getEstado());
+    }
 }
