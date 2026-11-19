@@ -27,6 +27,10 @@ public class CitaMedica {
             throw new IllegalArgumentException("Doctor identifier is required");
         }
 
+        if (especialidadId == null) {
+            throw new IllegalArgumentException("Specialty identifier is required");
+        }
+
         this.pacienteId = pacienteId;
         this.doctorId = doctorId;
         this.especialidadId = especialidadId;
