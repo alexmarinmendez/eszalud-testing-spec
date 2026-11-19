@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @DisplayName("Pruebas del modelo Especialidad")
@@ -53,5 +54,49 @@ class EspecialidadTest {
                 () -> assertEquals("Atención médica de bebés, niños y adolescentes",
                         especialidad.getDescripcion(), "descripcion")
         );
+    }
+
+    // ESP-004 (recomendada)
+    @Test
+    @DisplayName("Rechazar la creación de una especialidad con nombre vacío")
+    void shouldRejectSpecialtyWithEmptyName() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new Especialidad(
+                        "",
+                        "Diagnóstico y tratamiento de enfermedades del corazón"
+                )
+        );
+    }
+
+    // ESP-005 (recomendada)
+    @Test
+    @DisplayName("Rechazar la creación de una especialidad con nombre compuesto solo por espacios")
+    void shouldRejectSpecialtyWithBlankName() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new Especialidad(
+                        "   ",
+                        "Diagnóstico y tratamiento de enfermedades del corazón"
+                )
+        );
+    }
+
+    // ESP-006 (recomendada, regla documentada en DECISIONES.md)
+    @Test
+    @DisplayName("Aceptar una especialidad con descripción vacía porque la descripción es opcional")
+    void shouldAcceptSpecialtyWithEmptyDescriptionWhenDescriptionIsOptional() {
+        Especialidad especialidad = new Especialidad("Dermatología", "");
+
+        assertEquals("", especialidad.getDescripcion());
+    }
+
+    // ESP-007 (recomendada, regla documentada en DECISIONES.md)
+    @Test
+    @DisplayName("Aceptar una especialidad sin descripción porque la descripción es opcional")
+    void shouldAcceptSpecialtyWithoutDescriptionWhenDescriptionIsOptional() {
+        Especialidad especialidad = new Especialidad("Dermatología", null);
+
+        assertNull(especialidad.getDescripcion());
     }
 }
