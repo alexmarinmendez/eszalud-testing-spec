@@ -19,6 +19,10 @@ public class CitaMedica {
             String motivo,
             EstadoCita estado
     ) {
+        if (pacienteId == null) {
+            throw new IllegalArgumentException("Patient identifier is required");
+        }
+
         this.pacienteId = pacienteId;
         this.doctorId = doctorId;
         this.especialidadId = especialidadId;
