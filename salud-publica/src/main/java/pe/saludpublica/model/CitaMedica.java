@@ -19,7 +19,7 @@ public class CitaMedica {
     }
 
     private String validateRequiredText(String value, String alertMenssage) {
-        if (value == null ) {
+        if (value == null || value.isBlank() ) {
             throw new IllegalArgumentException(alertMenssage);
         }
         return value.trim();
