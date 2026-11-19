@@ -9,9 +9,9 @@ public class CitaMedica {
     private String especialidadId;
     private LocalDateTime fechaHora;
     private String motivo;
-    private String estado;
+    private EstadoCita estado;
 
-    public CitaMedica(String pacienteId, String doctorId, String especialidadId, LocalDateTime fechaHora, String motivo, String estado) {
+    public CitaMedica(String pacienteId, String doctorId, String especialidadId, LocalDateTime fechaHora, String motivo, EstadoCita estado) {
 
         if (pacienteId == null) {
             throw new IllegalArgumentException("El paciente de la cita es obligatorio");
@@ -53,7 +53,7 @@ public class CitaMedica {
         return motivo;
     }
 
-    public String getEstado() {
+    public EstadoCita getEstado() {
         return estado;
     }
 }

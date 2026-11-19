@@ -21,7 +21,7 @@ public class CitaMedicaTest {
                 "ESP001",
                 fechaHora,
                 "Dolor de cabeza",
-                "PROGRAMADA"
+                EstadoCita.PROGRAMADA
         );
 
         assertEquals("PAC001", cita.getPacienteId());
@@ -29,7 +29,7 @@ public class CitaMedicaTest {
         assertEquals("ESP001", cita.getEspecialidadId());
         assertEquals(fechaHora, cita.getFechaHora());
         assertEquals("Dolor de cabeza", cita.getMotivo());
-        assertEquals("PROGRAMADA", cita.getEstado());
+        assertEquals(EstadoCita.PROGRAMADA, cita.getEstado());
     }
 
     @Test
@@ -44,7 +44,7 @@ public class CitaMedicaTest {
                     "ESP001",
                     fechaHora,
                     "Dolor de cabeza",
-                    "PROGRAMADA"
+                    EstadoCita.PROGRAMADA
             );
         });
     }
@@ -61,7 +61,7 @@ public class CitaMedicaTest {
                     "ESP001",
                     fechaHora,
                     "Dolor de cabeza",
-                    "PROGRAMADA"
+                    EstadoCita.PROGRAMADA
             );
         });
     }
@@ -76,7 +76,7 @@ public class CitaMedicaTest {
                     "ESP001",
                     null,
                     "Dolor de cabeza",
-                    "PROGRAMADA"
+                    EstadoCita.PROGRAMADA
             );
         });
     }
