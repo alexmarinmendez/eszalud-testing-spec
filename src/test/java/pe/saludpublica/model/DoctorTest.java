@@ -40,4 +40,49 @@ class DoctorTest {
                 )
         );
     }
+
+    @Test
+    @DisplayName("Rechazar la creación de un doctor sin nombres")
+    void shouldRejectDoctorWithoutFirstName() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new Doctor(
+                        "87654321",
+                        null,
+                        "Mendoza",
+                        "CMP12345",
+                        "ESP-001"
+                )
+        );
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de un doctor sin apellidos")
+    void shouldRejectDoctorWithoutLastName() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new Doctor(
+                        "87654321",
+                        "Carlos",
+                        null,
+                        "CMP12345",
+                        "ESP-001"
+                )
+        );
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de un doctor sin colegiatura")
+    void shouldRejectDoctorWithoutLicense() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new Doctor(
+                        "87654321",
+                        "Carlos",
+                        "Mendoza",
+                        null,
+                        "ESP-001"
+                )
+        );
+    }
 }
