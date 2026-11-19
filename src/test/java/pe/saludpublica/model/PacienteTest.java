@@ -42,7 +42,6 @@ public class PacienteTest {
         });
     }
 
-
     @Test
     @DisplayName("Rechazar paciente con nombres nulos")
     void shouldThrowExceptionWhenFirstNameIsNull() {
@@ -58,12 +57,18 @@ public class PacienteTest {
         });
     }
 
+    @Test
+    @DisplayName("Rechazar paciente con apellidos nulos")
+    void shouldThrowExceptionWhenLastNameIsNull() {
 
-
-
-
-
-
-
-
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Paciente(
+                    "12345678",
+                    "Gianello",
+                    null,
+                    "987654321",
+                    "paciente@gmail.com"
+            );
+        });
+    }
 }
