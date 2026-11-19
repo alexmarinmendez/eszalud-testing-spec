@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -134,5 +135,30 @@ class CitaMedicaTest {
         );
 
         assertEquals(EstadoCita.ATENDIDA, cita.getEstado());
+    }
+
+    // CIT-008
+    @Test
+    @DisplayName("Verificar que cada atributo conserve su valor después de construir la cita")
+    void shouldKeepEachAttributeWhenAppointmentIsCreated() {
+        LocalDateTime fechaHora = LocalDateTime.of(2027, 1, 20, 11, 45);
+
+        CitaMedica cita = new CitaMedica(
+                "pac-077",
+                "doc-042",
+                "esp-003",
+                fechaHora,
+                "Evaluación pediátrica de rutina",
+                EstadoCita.CANCELADA
+        );
+
+        assertAll(
+                () -> assertEquals("pac-077", cita.getPaciente(), "paciente"),
+                () -> assertEquals("doc-042", cita.getDoctor(), "doctor"),
+                () -> assertEquals("esp-003", cita.getEspecialidad(), "especialidad"),
+                () -> assertEquals(fechaHora, cita.getFechaHora(), "fechaHora"),
+                () -> assertEquals("Evaluación pediátrica de rutina", cita.getMotivo(), "motivo"),
+                () -> assertEquals(EstadoCita.CANCELADA, cita.getEstado(), "estado")
+        );
     }
 }
