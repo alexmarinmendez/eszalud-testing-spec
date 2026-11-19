@@ -10,21 +10,20 @@ public class CitaMedica {
     private EstadoCita estado;
 
     public CitaMedica(String paciente, String doctor, String especialidad, String fechaHora, String motivo, EstadoCita estado) {
-        if (paciente == null ) {
-            throw new IllegalArgumentException("El paciente es obligatorio");
-        }
-        this.paciente = paciente;
-        if (doctor == null ) {
-            throw new IllegalArgumentException("El doctor es obligatorio");
-        }
-        this.doctor = doctor;
+
+        this.paciente = validateRequiredText(paciente,"El paciente es obligatorio");
+        this.doctor = validateRequiredText(doctor,"El doctor es obligatorio");
         this.especialidad = especialidad;
-        if (fechaHora == null ) {
-            throw new IllegalArgumentException("La fecha y hora es obligatorio");
-        }
-        this.fechaHora = fechaHora;
+        this.fechaHora = validateRequiredText(fechaHora,"La fecha y hora es obligatorio");
         this.motivo = motivo;
         this.estado = (estado != null) ? estado : EstadoCita.PROGRAMADA;
+    }
+
+    private String validateRequiredText(String value, String alertMenssage) {
+        if (value == null ) {
+            throw new IllegalArgumentException(alertMenssage);
+        }
+        return value.trim();
     }
 
     public String getPaciente() {
