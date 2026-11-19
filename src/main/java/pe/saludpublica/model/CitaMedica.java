@@ -12,10 +12,10 @@ public class CitaMedica {
 
     public CitaMedica(String paciente, String doctor, String especialidad,
                       LocalDateTime fechaHora, String motivo, EstadoCita estado) {
-        if (paciente == null) throw new IllegalArgumentException("El paciente es obligatorio");
-        if (doctor == null) throw new IllegalArgumentException("El doctor es obligatorio");
-        if (especialidad == null) throw new IllegalArgumentException("La especialidad es obligatoria");
-        if (fechaHora == null) throw new IllegalArgumentException("La fecha y hora son obligatorias");
+        Validaciones.requerido(paciente, "El paciente es obligatorio");
+        Validaciones.requerido(doctor, "El doctor es obligatorio");
+        Validaciones.requerido(especialidad, "La especialidad es obligatoria");
+        Validaciones.requerido(fechaHora, "La fecha y hora son obligatorias");
         this.paciente = paciente;
         this.doctor = doctor;
         this.especialidad = especialidad;
