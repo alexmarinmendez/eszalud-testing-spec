@@ -80,4 +80,23 @@ class DoctorTest {
                 )
         );
     }
+
+    @Test
+    void doc006_returnsValuesThroughGettersAfterConstruction() {
+        Doctor doctor = new Doctor(
+                "12345678",
+                "Lucía Elena",
+                "Flores Rojas",
+                "CMP-12345",
+                "Neurología"
+        );
+
+        assertAll(
+                () -> assertEquals("12345678", doctor.getDocumento()),
+                () -> assertEquals("Lucía Elena", doctor.getNombres()),
+                () -> assertEquals("Flores Rojas", doctor.getApellidos()),
+                () -> assertEquals("CMP-12345", doctor.getColegiatura()),
+                () -> assertEquals("Neurología", doctor.getEspecialidad())
+        );
+    }
 }
