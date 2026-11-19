@@ -13,24 +13,19 @@ public class CitaMedica {
 
     public CitaMedica(String paciente, String doctor, String especialidad,
                       LocalDateTime fechaHora, String motivo, EstadoCita estado) {
-        if (paciente == null) {
-            throw new IllegalArgumentException("El paciente de la cita es obligatorio");
-        }
-        if (doctor == null) {
-            throw new IllegalArgumentException("El doctor de la cita es obligatorio");
-        }
-        if (especialidad == null) {
-            throw new IllegalArgumentException("La especialidad de la cita es obligatoria");
-        }
-        if (fechaHora == null) {
-            throw new IllegalArgumentException("La fecha y hora de la cita son obligatorias");
-        }
-        this.paciente = paciente;
-        this.doctor = doctor;
-        this.especialidad = especialidad;
-        this.fechaHora = fechaHora;
+        this.paciente = requireValue(paciente, "El paciente de la cita es obligatorio");
+        this.doctor = requireValue(doctor, "El doctor de la cita es obligatorio");
+        this.especialidad = requireValue(especialidad, "La especialidad de la cita es obligatoria");
+        this.fechaHora = requireValue(fechaHora, "La fecha y hora de la cita son obligatorias");
         this.motivo = motivo;
         this.estado = (estado == null) ? EstadoCita.PROGRAMADA : estado;
+    }
+
+    private static <T> T requireValue(T value, String message) {
+        if (value == null) {
+            throw new IllegalArgumentException(message);
+        }
+        return value;
     }
 
     public String getPaciente() {
