@@ -3,6 +3,7 @@ package pe.saludpublica.model;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.time.LocalDateTime;
 
@@ -32,6 +33,20 @@ class CitaMedicaTest {
                 () -> assertEquals(FECHA_HORA, cita.getFechaHora()),
                 () -> assertEquals("Consulta de control", cita.getMotivo()),
                 () -> assertEquals(EstadoCita.PROGRAMADA, cita.getEstado())
+        );
+    }
+
+    @Test
+    void cit002_throwsExceptionWhenPatientIdIsNull() {
+        assertThrows(IllegalArgumentException.class, () ->
+                new CitaMedica(
+                        null,
+                        "DOC-001",
+                        "ESP-001",
+                        FECHA_HORA,
+                        "Consulta de control",
+                        EstadoCita.PROGRAMADA
+                )
         );
     }
 }
