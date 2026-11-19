@@ -3,6 +3,7 @@ package pe.saludpublica.model;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -35,6 +36,22 @@ class EspecialidadTest {
                         null,
                         "Diagnóstico y tratamiento de enfermedades del corazón"
                 )
+        );
+    }
+
+    // ESP-003
+    @Test
+    @DisplayName("Verificar que cada atributo conserve su valor después de construir la especialidad")
+    void shouldKeepEachAttributeWhenSpecialtyIsCreated() {
+        Especialidad especialidad = new Especialidad(
+                "Pediatría",
+                "Atención médica de bebés, niños y adolescentes"
+        );
+
+        assertAll(
+                () -> assertEquals("Pediatría", especialidad.getNombre(), "nombre"),
+                () -> assertEquals("Atención médica de bebés, niños y adolescentes",
+                        especialidad.getDescripcion(), "descripcion")
         );
     }
 }
