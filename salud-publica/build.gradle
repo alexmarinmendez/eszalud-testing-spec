@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+}
+
+group = 'pe.saludpublica'
+version = '1.0-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // JUnit 6 (el BOM alinea las versiones de todos los módulos de JUnit)
+    testImplementation platform('org.junit:junit-bom:6.1.3')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    // Mockito (para aislar dependencias cuando haga falta)
+    testImplementation 'org.mockito:mockito-core:5.23.0'
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.23.0'
+}
+
+test {
+    useJUnitPlatform()
+}
