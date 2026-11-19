@@ -32,4 +32,11 @@ public class EspecialidadTest {
         );
     }
 
+    @Test
+    @DisplayName("Rechazar especialidad con espacios en blanco")
+    void shouldRejectSpecialtyWithBlankName() {
+        assertThrows(IllegalArgumentException.class, () -> new Especialidad("", "Atención Primaria"));
+        assertThrows(IllegalArgumentException.class, () -> new Especialidad("   ", "Atención Primaria"));
+    }
+
 }

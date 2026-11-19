@@ -39,4 +39,11 @@ public class PacienteTest {
                 )
         );
     }
+
+    @Test
+    @DisplayName("Rechazar paciente con datos blancos ( espacios )")
+    void shouldRejectPatientWithBlankDocument() {
+        assertThrows(IllegalArgumentException.class, () -> new Paciente("", "Ana", "Pérez", "987654321", "ana@mail.com"));
+        assertThrows(IllegalArgumentException.class, () -> new Paciente("   ", "Ana", "Pérez", "987654321", "ana@mail.com"));
+    }
 }
