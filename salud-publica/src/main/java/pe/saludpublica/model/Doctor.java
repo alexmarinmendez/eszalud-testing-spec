@@ -16,7 +16,7 @@ public class Doctor {
         this.nombres = requireValue(nombres, "Los nombres del doctor son obligatorios");
         this.apellidos = requireValue(apellidos, "Los apellidos del doctor son obligatorios");
         this.colegiatura = requireValue(colegiatura, "La colegiatura del doctor es obligatoria");
-        this.especialidad = especialidad;
+        this.especialidad = requireValue(especialidad, "La especialidad del doctor es obligatoria");
     }
 
     public String getDocumento() {
