@@ -54,4 +54,17 @@ class DoctorTest {
                 )
         );
     }
+
+    @Test
+    void doc004_throwsExceptionWhenLastNamesAreNull() {
+        assertThrows(IllegalArgumentException.class, () ->
+                new Doctor(
+                        "45678912",
+                        "Carlos Eduardo",
+                        null,
+                        "CMP-45678",
+                        "Cardiología"
+                )
+        );
+    }
 }
