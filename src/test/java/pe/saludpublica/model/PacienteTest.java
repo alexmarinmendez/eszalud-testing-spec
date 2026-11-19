@@ -43,6 +43,23 @@ public class PacienteTest {
     }
 
 
+    @Test
+    @DisplayName("Rechazar paciente con nombres nulos")
+    void shouldThrowExceptionWhenFirstNameIsNull() {
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Paciente(
+                    "12345678",
+                    null,
+                    "Orbegozo",
+                    "987654321",
+                    "paciente@gmail.com"
+            );
+        });
+    }
+
+
+
 
 
 
