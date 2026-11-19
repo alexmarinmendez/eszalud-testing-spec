@@ -21,6 +21,10 @@ public class Doctor {
             throw new IllegalArgumentException("Last names are required");
         }
 
+        if (colegiatura == null) {
+            throw new IllegalArgumentException("Medical license is required");
+        }
+
         this.documento = documento;
         this.nombres = nombres;
         this.apellidos = apellidos;
