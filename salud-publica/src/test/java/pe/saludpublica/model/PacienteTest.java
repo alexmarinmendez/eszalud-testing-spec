@@ -163,4 +163,20 @@ class PacienteTest {
                 )
         );
     }
+
+    // PAC-010 (recomendada, regla documentada en DECISIONES.md)
+    @Test
+    @DisplayName("Rechazar la creación de un paciente con correo de formato inválido")
+    void shouldRejectPatientWithInvalidEmail() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new Paciente(
+                        "12345678",
+                        "Ana",
+                        "Pérez",
+                        "987654321",
+                        "ana.mail.com"
+                )
+        );
+    }
 }
