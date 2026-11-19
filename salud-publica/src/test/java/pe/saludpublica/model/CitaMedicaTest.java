@@ -69,4 +69,21 @@ class CitaMedicaTest {
                 )
         );
     }
+
+    // CIT-004
+    @Test
+    @DisplayName("Rechazar la creación de una cita sin especialidad")
+    void shouldRejectAppointmentWithoutSpecialty() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new CitaMedica(
+                        "pac-001",
+                        "doc-001",
+                        null,
+                        LocalDateTime.of(2026, 12, 15, 9, 30),
+                        "Control de presión arterial",
+                        EstadoCita.PROGRAMADA
+                )
+        );
+    }
 }
