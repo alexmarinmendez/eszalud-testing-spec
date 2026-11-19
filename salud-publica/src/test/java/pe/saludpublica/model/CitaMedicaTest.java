@@ -3,8 +3,7 @@ package pe.saludpublica.model;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CitaMedicaTest {
 
@@ -27,6 +26,22 @@ public class CitaMedicaTest {
         assertEquals("2026-11-23 16:30", cita.getFechaHora());
         assertEquals("Dolor abdominal", cita.getMotivo());
         assertEquals("PROGRAMADA", cita.getEstado());
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de un doctor sin documento")
+    void shouldRejectDoctorWithoutDocument() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new CitaMedica(
+                        null,
+                        "87654321",
+                        "Pediatría",
+                        "2026-11-23 16:30",
+                        "Dolor abdominal",
+                        "PROGRAMADA"
+                )
+        );
     }
 
 }
