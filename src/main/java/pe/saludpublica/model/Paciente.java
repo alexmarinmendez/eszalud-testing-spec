@@ -17,6 +17,10 @@ public class Paciente {
             throw new IllegalArgumentException("Names are required");
         }
 
+        if (apellidos == null) {
+            throw new IllegalArgumentException("Last names are required");
+        }
+
         this.documento = documento;
         this.nombres = nombres;
         this.apellidos = apellidos;
