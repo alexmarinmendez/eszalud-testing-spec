@@ -35,4 +35,20 @@ class EspecialidadTest {
                 )
         );
     }
+
+    @Test
+    void esp003_returnsValuesThroughGettersAfterConstruction() {
+        Especialidad especialidad = new Especialidad(
+                "Neurología",
+                "Diagnóstico y tratamiento de enfermedades del sistema nervioso"
+        );
+
+        assertAll(
+                () -> assertEquals("Neurología", especialidad.getNombre()),
+                () -> assertEquals(
+                        "Diagnóstico y tratamiento de enfermedades del sistema nervioso",
+                        especialidad.getDescripcion()
+                )
+        );
+    }
 }
