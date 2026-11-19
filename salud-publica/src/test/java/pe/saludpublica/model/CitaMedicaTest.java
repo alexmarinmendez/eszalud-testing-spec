@@ -34,8 +34,8 @@ public class CitaMedicaTest {
         assertThrows(
                 IllegalArgumentException.class,
                 () -> new CitaMedica(
+                        "12345678",
                         null,
-                        "87654321",
                         "Pediatría",
                         "2026-11-23 16:30",
                         "Dolor abdominal",
