@@ -99,4 +99,20 @@ class PacienteTest {
                 () -> assertEquals("luis.gomez@mail.com", paciente.getCorreo(), "correo")
         );
     }
+
+    // PAC-006 (recomendada)
+    @Test
+    @DisplayName("Rechazar la creación de un paciente con documento vacío")
+    void shouldRejectPatientWithEmptyDocument() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new Paciente(
+                        "",
+                        "Ana",
+                        "Pérez",
+                        "987654321",
+                        "ana@mail.com"
+                )
+        );
+    }
 }
