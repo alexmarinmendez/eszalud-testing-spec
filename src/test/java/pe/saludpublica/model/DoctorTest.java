@@ -42,6 +42,20 @@ public class DoctorTest {
         });
     }
 
+    @Test
+    @DisplayName("Rechazar doctor con colegiatura nula")
+    void shouldThrowExceptionWhenLicenseIsNull() {
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Doctor(
+                    "12345678",
+                    "Carlos",
+                    "Ramirez",
+                    null,
+                    "ESP001"
+            );
+        });
+    }
 
 
 
