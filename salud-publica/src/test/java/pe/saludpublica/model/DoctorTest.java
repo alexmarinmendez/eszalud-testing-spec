@@ -115,4 +115,69 @@ class DoctorTest {
                 () -> assertEquals("esp-003", doctor.getEspecialidad(), "especialidad")
         );
     }
+
+    // DOC-007 (recomendada)
+    @Test
+    @DisplayName("Rechazar la creación de un doctor con documento vacío")
+    void shouldRejectDoctorWithEmptyDocument() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new Doctor(
+                        "",
+                        "Carlos",
+                        "Ramírez",
+                        "CMP-12345",
+                        "esp-001"
+                )
+        );
+    }
+
+    // DOC-008 (recomendada)
+    @Test
+    @DisplayName("Rechazar la creación de un doctor con nombres o apellidos vacíos")
+    void shouldRejectDoctorWithEmptyNames() {
+        assertAll(
+                () -> assertThrows(
+                        IllegalArgumentException.class,
+                        () -> new Doctor("45678912", "", "Ramírez", "CMP-12345", "esp-001"),
+                        "nombres vacíos"
+                ),
+                () -> assertThrows(
+                        IllegalArgumentException.class,
+                        () -> new Doctor("45678912", "Carlos", "", "CMP-12345", "esp-001"),
+                        "apellidos vacíos"
+                )
+        );
+    }
+
+    // DOC-009 (recomendada)
+    @Test
+    @DisplayName("Rechazar la creación de un doctor con colegiatura vacía")
+    void shouldRejectDoctorWithEmptyLicense() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new Doctor(
+                        "45678912",
+                        "Carlos",
+                        "Ramírez",
+                        "",
+                        "esp-001"
+                )
+        );
+    }
+
+    // DOC-010 (recomendada, regla documentada en DECISIONES.md)
+    @Test
+    @DisplayName("Aceptar una colegiatura con formato libre porque no existe una regla de formato")
+    void shouldAcceptLicenseWithAnyFormatWhenNoFormatRuleExists() {
+        Doctor doctor = new Doctor(
+                "45678912",
+                "Carlos",
+                "Ramírez",
+                "12345",
+                "esp-001"
+        );
+
+        assertEquals("12345", doctor.getColegiatura());
+    }
 }
