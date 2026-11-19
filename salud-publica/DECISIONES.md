@@ -16,3 +16,5 @@ las pruebas que dependen de ellas (sección 8 de la EFP).
 | Estado de la cita | Si se recibe `null`, se asigna `PROGRAMADA`. | Una cita recién creada nace programada. Sigue el mismo criterio de valores por defecto aplicado en los ejemplos del curso. |
 | Identificadores | Las referencias a paciente, doctor y especialidad se representan como `String`. | MongoDB identifica los documentos con `_id`; en el modelo se manejan como texto. |
 | Tipo de fecha y hora | `java.time.LocalDateTime`. | Representa fecha y hora sin depender de la zona horaria. |
+| Mutabilidad de los modelos | Los cuatro modelos son inmutables: sus atributos son `final` y no tienen setters. | Una vez validado en el constructor, un objeto no puede pasar a un estado inválido. Por eso GEN-002 verifica la ausencia de setters en lugar de probarlos. |
+| Igualdad entre objetos | No se implementan `equals()` ni `hashCode()`; se usa la igualdad por referencia de Java. | La identidad de negocio la da el `_id` de MongoDB, que no forma parte de la capa Model. GEN-004 no aplica. |
