@@ -22,8 +22,13 @@ public class CitaMedica {
             throw new IllegalArgumentException("El doctor de la cita es obligatorio");
         }
         this.doctorId = doctorId;
-        this.especialidadId = especialidadId;
+
+        if (fechaHora == null) {
+            throw new IllegalArgumentException("La fecha y hora de la cita son obligatorias");
+        }
         this.fechaHora = fechaHora;
+
+        this.especialidadId = especialidadId;
         this.motivo = motivo;
         this.estado = estado;
     }
