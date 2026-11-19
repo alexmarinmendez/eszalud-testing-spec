@@ -43,4 +43,17 @@ class PacienteTest {
         );
     }
 
+    @Test
+    void pac003_throwsExceptionWhenNamesAreNull() {
+        assertThrows(IllegalArgumentException.class, () ->
+                new Paciente(
+                        "74859632",
+                        null,
+                        "Pérez Salazar",
+                        "987654321",
+                        "ana.perez@email.com"
+                )
+        );
+    }
+
 }
