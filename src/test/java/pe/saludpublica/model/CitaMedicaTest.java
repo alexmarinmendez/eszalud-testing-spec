@@ -43,4 +43,20 @@ class CitaMedicaTest {
                 )
         );
     }
+
+    @Test
+    @DisplayName("Rechazar la creación de una cita sin doctor")
+    void shouldRejectAppointmentWithoutDoctor() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new CitaMedica(
+                        "PAC-123",
+                        null,
+                        "ESP-001",
+                        "2026-11-20 10:00",
+                        "Consulta general",
+                        "PROGRAMADA"
+                )
+        );
+    }
 }
