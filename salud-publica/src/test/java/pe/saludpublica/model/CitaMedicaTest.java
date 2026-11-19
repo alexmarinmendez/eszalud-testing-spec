@@ -35,9 +35,9 @@ public class CitaMedicaTest {
                 IllegalArgumentException.class,
                 () -> new CitaMedica(
                         "12345678",
-                        null,
+                        "87654321",
                         "Pediatría",
-                        "2026-11-23 16:30",
+                        null,
                         "Dolor abdominal",
                         "PROGRAMADA"
                 )
