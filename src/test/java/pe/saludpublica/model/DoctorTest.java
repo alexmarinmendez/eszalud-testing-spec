@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class DoctorTest {
 
@@ -25,6 +26,22 @@ public class DoctorTest {
         assertEquals("CMP12345", doctor.getColegiatura());
         assertEquals("ESP001", doctor.getEspecialidadId());
     }
+
+    @Test
+    @DisplayName("Rechazar doctor con documento nulo")
+    void shouldThrowExceptionWhenDocumentIsNull() {
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Doctor(
+                    null,
+                    "Carlos",
+                    "Ramirez",
+                    "CMP12345",
+                    "ESP001"
+            );
+        });
+    }
+
 
 
 
