@@ -9,6 +9,9 @@ public class CitaMedica {
     private EstadoCita estado;
 
     public CitaMedica(String paciente, String doctor, String especialidad, String fechaHora, String motivo, String estado) {
+        if (paciente == null) {
+            throw new IllegalArgumentException("El paciente no puede ser nulo");
+        }
         this.paciente = paciente;
         this.doctor = doctor;
         this.especialidad = especialidad;
