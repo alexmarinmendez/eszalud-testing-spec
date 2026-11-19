@@ -41,4 +41,39 @@ class CitaMedicaTest {
         assertEquals("Chequeo general", cita.getMotivo());
         assertEquals(EstadoCita.ATENDIDA, cita.getEstado());
     }
+
+    @Test
+    @DisplayName("Rechazar la creación de una cita sin paciente")
+    void shouldRejectAppointmentWithoutPatient() {
+        assertThrows(IllegalArgumentException.class,
+            () -> new CitaMedica(null, "D001", "E001", FECHA, "Control", EstadoCita.PROGRAMADA));
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de una cita sin doctor")
+    void shouldRejectAppointmentWithoutDoctor() {
+        assertThrows(IllegalArgumentException.class,
+            () -> new CitaMedica("P001", null, "E001", FECHA, "Control", EstadoCita.PROGRAMADA));
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de una cita sin especialidad")
+    void shouldRejectAppointmentWithoutSpecialty() {
+        assertThrows(IllegalArgumentException.class,
+            () -> new CitaMedica("P001", "D001", null, FECHA, "Control", EstadoCita.PROGRAMADA));
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de una cita sin fecha y hora")
+    void shouldRejectAppointmentWithoutDateTime() {
+        assertThrows(IllegalArgumentException.class,
+            () -> new CitaMedica("P001", "D001", "E001", null, "Control", EstadoCita.PROGRAMADA));
+    }
+
+    @Test
+    @DisplayName("Asignar el estado PROGRAMADA cuando el estado recibido es null")
+    void shouldDefaultToScheduledWhenStatusIsNull() {
+        CitaMedica cita = new CitaMedica("P001", "D001", "E001", FECHA, "Control", null);
+        assertEquals(EstadoCita.PROGRAMADA, cita.getEstado());
+    }
 }
