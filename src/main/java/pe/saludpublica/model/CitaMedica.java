@@ -12,7 +12,12 @@ public class CitaMedica {
     private String estado;
 
     public CitaMedica(String pacienteId, String doctorId, String especialidadId, LocalDateTime fechaHora, String motivo, String estado) {
+
+        if (pacienteId == null) {
+            throw new IllegalArgumentException("El paciente de la cita es obligatorio");
+        }
         this.pacienteId = pacienteId;
+
         this.doctorId = doctorId;
         this.especialidadId = especialidadId;
         this.fechaHora = fechaHora;
