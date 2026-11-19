@@ -13,24 +13,30 @@ public class CitaMedica {
 
     public CitaMedica(String pacienteId, String doctorId, String especialidadId, LocalDateTime fechaHora, String motivo, EstadoCita estado) {
 
+        validarDatosObligatorios(pacienteId, doctorId, fechaHora);
+
+        this.pacienteId = pacienteId;
+        this.doctorId = doctorId;
+        this.especialidadId = especialidadId;
+        this.fechaHora = fechaHora;
+        this.motivo = motivo;
+        this.estado = estado;
+    }
+
+    private void validarDatosObligatorios(String pacienteId, String doctorId,
+                                          LocalDateTime fechaHora) {
+
         if (pacienteId == null) {
             throw new IllegalArgumentException("El paciente de la cita es obligatorio");
         }
-        this.pacienteId = pacienteId;
 
         if (doctorId == null) {
             throw new IllegalArgumentException("El doctor de la cita es obligatorio");
         }
-        this.doctorId = doctorId;
 
         if (fechaHora == null) {
             throw new IllegalArgumentException("La fecha y hora de la cita son obligatorias");
         }
-        this.fechaHora = fechaHora;
-
-        this.especialidadId = especialidadId;
-        this.motivo = motivo;
-        this.estado = estado;
     }
 
     public String getPacienteId() {
