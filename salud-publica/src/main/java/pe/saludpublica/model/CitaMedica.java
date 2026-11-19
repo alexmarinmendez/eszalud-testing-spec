@@ -2,6 +2,8 @@ package pe.saludpublica.model;
 
 import java.time.LocalDateTime;
 
+import static pe.saludpublica.model.Validaciones.requireValue;
+
 public class CitaMedica {
 
     private final String paciente;
@@ -19,13 +21,6 @@ public class CitaMedica {
         this.fechaHora = requireValue(fechaHora, "La fecha y hora de la cita son obligatorias");
         this.motivo = motivo;
         this.estado = (estado == null) ? EstadoCita.PROGRAMADA : estado;
-    }
-
-    private static <T> T requireValue(T value, String message) {
-        if (value == null) {
-            throw new IllegalArgumentException(message);
-        }
-        return value;
     }
 
     public String getPaciente() {

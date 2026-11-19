@@ -1,5 +1,7 @@
 package pe.saludpublica.model;
 
+import static pe.saludpublica.model.Validaciones.requireValue;
+
 public class Paciente {
 
     private final String documento;
@@ -15,13 +17,6 @@ public class Paciente {
         this.apellidos = requireValue(apellidos, "Los apellidos del paciente son obligatorios");
         this.telefono = telefono;
         this.correo = correo;
-    }
-
-    private static String requireValue(String value, String message) {
-        if (value == null) {
-            throw new IllegalArgumentException(message);
-        }
-        return value;
     }
 
     public String getDocumento() {

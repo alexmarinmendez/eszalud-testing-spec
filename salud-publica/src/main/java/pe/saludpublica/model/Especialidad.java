@@ -1,5 +1,7 @@
 package pe.saludpublica.model;
 
+import static pe.saludpublica.model.Validaciones.requireValue;
+
 public class Especialidad {
 
     private final String nombre;
@@ -8,13 +10,6 @@ public class Especialidad {
     public Especialidad(String nombre, String descripcion) {
         this.nombre = requireValue(nombre, "El nombre de la especialidad es obligatorio");
         this.descripcion = descripcion;
-    }
-
-    private static String requireValue(String value, String message) {
-        if (value == null) {
-            throw new IllegalArgumentException(message);
-        }
-        return value;
     }
 
     public String getNombre() {
