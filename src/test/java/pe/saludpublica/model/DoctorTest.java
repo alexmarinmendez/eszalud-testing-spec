@@ -3,6 +3,7 @@ package pe.saludpublica.model;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -25,6 +26,19 @@ class DoctorTest {
                 () -> assertEquals("Ramírez Torres", doctor.getApellidos()),
                 () -> assertEquals("CMP-45678", doctor.getColegiatura()),
                 () -> assertEquals("Cardiología", doctor.getEspecialidad())
+        );
+    }
+
+    @Test
+    void doc002_throwsExceptionWhenDocumentIsNull() {
+        assertThrows(IllegalArgumentException.class, () ->
+                new Doctor(
+                        null,
+                        "Carlos Eduardo",
+                        "Ramírez Torres",
+                        "CMP-45678",
+                        "Cardiología"
+                )
         );
     }
 }
