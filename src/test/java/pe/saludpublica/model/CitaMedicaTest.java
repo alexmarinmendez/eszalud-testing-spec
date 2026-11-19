@@ -71,6 +71,39 @@ public class CitaMedicaTest {
         );
     }
 
+    @Test
+    @DisplayName("Asignar estado PROGRAMADA por defecto cuando el estado recibido es null")
+    void shouldAssignDefaultScheduledStatusWhenStatusIsNull() {
+        LocalDateTime fechaHora = LocalDateTime.of(2026, 11, 23, 16, 30);
+        CitaMedica cita = new CitaMedica(
+                "6af71e0b501cca046a166049",
+                "6af7271e501cca046a16604f",
+                "6af71da3501cca046a166045",
+                fechaHora,
+                "Dolor abdominal",
+                null
+        );
+
+        assertEquals(EstadoCita.PROGRAMADA, cita.getEstado());
+    }
+
+    @Test
+    @DisplayName("Conservar el estado válido recibido al crear una cita")
+    void shouldPreserveValidAppointmentStatus() {
+        LocalDateTime fechaHora = LocalDateTime.of(2026, 11, 23, 16, 30);
+        CitaMedica cita = new CitaMedica(
+                "6af71e0b501cca046a166049",
+                "6af7271e501cca046a16604f",
+                "6af71da3501cca046a166045",
+                fechaHora,
+                "Control posterior",
+                EstadoCita.ATENDIDA
+        );
+
+        assertEquals(EstadoCita.ATENDIDA, cita.getEstado());
+    }
+
+
 
 
 }
