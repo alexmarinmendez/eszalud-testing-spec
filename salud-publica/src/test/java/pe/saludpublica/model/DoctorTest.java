@@ -181,6 +181,22 @@ class DoctorTest {
         assertEquals("12345", doctor.getColegiatura());
     }
 
+    // DOC-011 (recomendada, regla documentada en DECISIONES.md)
+    @Test
+    @DisplayName("Rechazar la creación de un doctor con especialidad vacía")
+    void shouldRejectDoctorWithEmptySpecialty() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new Doctor(
+                        "45678912",
+                        "Carlos",
+                        "Ramírez",
+                        "CMP-12345",
+                        ""
+                )
+        );
+    }
+
     // DOC-012 (recomendada, regla documentada en DECISIONES.md)
     @Test
     @DisplayName("Rechazar la creación de un doctor sin especialidad")
