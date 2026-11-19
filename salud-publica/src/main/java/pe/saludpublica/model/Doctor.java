@@ -9,6 +9,18 @@ public class Doctor {
     private final String especialidad;
 
     public Doctor(String documento, String nombres, String apellidos, String colegiatura, String especialidad) {
+        if (documento == null || documento.isBlank()) {
+            throw new IllegalArgumentException("Ingrese el documento del doctor");
+        }
+        if (nombres == null || nombres.isBlank()) {
+            throw new IllegalArgumentException("Ingrese los nombres del doctor");
+        }
+        if (apellidos == null || apellidos.isBlank()) {
+            throw new IllegalArgumentException("Ingrese los apellidos del doctor");
+        }
+        if (colegiatura == null || colegiatura.isBlank()) {
+            throw new IllegalArgumentException("Ingrese la colegiatura del doctor");
+        }
         this.documento = documento;
         this.nombres = nombres;
         this.apellidos = apellidos;
