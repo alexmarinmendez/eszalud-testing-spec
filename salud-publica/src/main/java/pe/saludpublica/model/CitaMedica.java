@@ -10,6 +10,9 @@ public class CitaMedica {
     private String estado;
 
     public CitaMedica(String paciente, String doctor, String especialidad, String fechaHora, String motivo, String estado) {
+        if (paciente == null ) {
+            throw new IllegalArgumentException("El paciente es obligatorio");
+        }
         this.paciente = paciente;
         this.doctor = doctor;
         this.especialidad = especialidad;
