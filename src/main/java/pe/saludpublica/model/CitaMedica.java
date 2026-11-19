@@ -34,7 +34,7 @@ public class CitaMedica {
         this.especialidad = especialidad;
         this.fechaHora = fechaHora;
         this.motivo = motivo;
-        this.estado = estado;
+        this.estado = (estado != null) ? estado : EstadoCita.PROGRAMADA;
     }
 
     public String getPaciente() { return paciente; }
