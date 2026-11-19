@@ -77,4 +77,18 @@ class CitaMedicaTest {
                 )
         );
     }
+
+    @Test
+    void cit005_throwsExceptionWhenDateTimeIsNull() {
+        assertThrows(IllegalArgumentException.class, () ->
+                new CitaMedica(
+                        "PAC-001",
+                        "DOC-001",
+                        "ESP-001",
+                        null,
+                        "Consulta de control",
+                        EstadoCita.PROGRAMADA
+                )
+        );
+    }
 }
