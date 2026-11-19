@@ -105,4 +105,18 @@ class CitaMedicaTest {
 
         assertEquals(EstadoCita.PROGRAMADA, cita.getEstado());
     }
+
+    @Test
+    void cit007_preservesProvidedValidStatus() {
+        CitaMedica cita = new CitaMedica(
+                "PAC-001",
+                "DOC-001",
+                "ESP-001",
+                FECHA_HORA,
+                "Consulta de control",
+                EstadoCita.ATENDIDA
+        );
+
+        assertEquals(EstadoCita.ATENDIDA, cita.getEstado());
+    }
 }
