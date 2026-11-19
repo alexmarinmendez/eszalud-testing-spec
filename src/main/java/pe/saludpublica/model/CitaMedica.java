@@ -23,6 +23,10 @@ public class CitaMedica {
             throw new IllegalArgumentException("Patient identifier is required");
         }
 
+        if (doctorId == null) {
+            throw new IllegalArgumentException("Doctor identifier is required");
+        }
+
         this.pacienteId = pacienteId;
         this.doctorId = doctorId;
         this.especialidadId = especialidadId;
