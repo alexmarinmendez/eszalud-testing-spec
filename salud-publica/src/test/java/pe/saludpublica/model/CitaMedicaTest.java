@@ -103,4 +103,20 @@ class CitaMedicaTest {
                 )
         );
     }
+
+    // CIT-006 (regla documentada en DECISIONES.md)
+    @Test
+    @DisplayName("Asignar el estado PROGRAMADA cuando la cita se crea sin estado")
+    void shouldAssignScheduledStatusWhenStatusIsNull() {
+        CitaMedica cita = new CitaMedica(
+                "pac-001",
+                "doc-001",
+                "esp-001",
+                LocalDateTime.of(2026, 12, 15, 9, 30),
+                "Control de presión arterial",
+                null
+        );
+
+        assertEquals(EstadoCita.PROGRAMADA, cita.getEstado());
+    }
 }
