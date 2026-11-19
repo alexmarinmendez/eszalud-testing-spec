@@ -59,4 +59,36 @@ class CitaMedicaTest {
                 )
         );
     }
+
+    @Test
+    @DisplayName("Rechazar la creación de una cita sin especialidad")
+    void shouldRejectAppointmentWithoutSpecialty() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new CitaMedica(
+                        "PAC-123",
+                        "DOC-456",
+                        null,
+                        "2026-11-20 10:00",
+                        "Consulta general",
+                        "PROGRAMADA"
+                )
+        );
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de una cita sin fecha y hora")
+    void shouldRejectAppointmentWithoutDate() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new CitaMedica(
+                        "PAC-123",
+                        "DOC-456",
+                        "ESP-001",
+                        null,
+                        "Consulta general",
+                        "PROGRAMADA"
+                )
+        );
+    }
 }
