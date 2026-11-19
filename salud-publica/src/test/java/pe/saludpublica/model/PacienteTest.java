@@ -131,4 +131,36 @@ class PacienteTest {
                 )
         );
     }
+
+    // PAC-008 (recomendada)
+    @Test
+    @DisplayName("Rechazar la creación de un paciente con nombres vacíos")
+    void shouldRejectPatientWithEmptyFirstName() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new Paciente(
+                        "12345678",
+                        "",
+                        "Pérez",
+                        "987654321",
+                        "ana@mail.com"
+                )
+        );
+    }
+
+    // PAC-009 (recomendada)
+    @Test
+    @DisplayName("Rechazar la creación de un paciente con apellidos vacíos")
+    void shouldRejectPatientWithEmptyLastName() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new Paciente(
+                        "12345678",
+                        "Ana",
+                        "",
+                        "987654321",
+                        "ana@mail.com"
+                )
+        );
+    }
 }
