@@ -1,8 +1,13 @@
 package pe.saludpublica.model;
 
+import java.util.regex.Pattern;
+
 import static pe.saludpublica.model.Validaciones.requireValue;
 
 public class Paciente {
+
+    private static final Pattern FORMATO_CORREO =
+            Pattern.compile("^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$");
 
     private final String documento;
     private final String nombres;
@@ -16,7 +21,14 @@ public class Paciente {
         this.nombres = requireValue(nombres, "Los nombres del paciente son obligatorios");
         this.apellidos = requireValue(apellidos, "Los apellidos del paciente son obligatorios");
         this.telefono = telefono;
-        this.correo = correo;
+        this.correo = validarCorreo(correo);
+    }
+
+    private static String validarCorreo(String correo) {
+        if (correo != null && !FORMATO_CORREO.matcher(correo).matches()) {
+            throw new IllegalArgumentException("El correo del paciente no tiene un formato válido");
+        }
+        return correo;
     }
 
     public String getDocumento() {
