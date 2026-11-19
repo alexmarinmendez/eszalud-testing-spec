@@ -2,18 +2,17 @@ package pe.saludpublica.model;
 
 public class CitaMedica {
 
-    private String paciente;
-    private String doctor;
-    private String especialidad;
-    private String fechaHora;
-    private String motivo;
+    private final String paciente;
+    private final String doctor;
+    private final String especialidad;
+    private final String fechaHora;
+    private final String motivo;
     private EstadoCita estado;
 
     public CitaMedica(String paciente, String doctor, String especialidad, String fechaHora, String motivo, EstadoCita estado) {
 
         this.paciente = validateRequiredText(paciente,"El paciente es obligatorio");
         this.doctor = validateRequiredText(doctor,"El doctor es obligatorio");
-        this.especialidad = especialidad;
         this.fechaHora = validateRequiredText(fechaHora,"La fecha y hora es obligatorio");
         this.motivo = motivo;
         this.estado = (estado != null) ? estado : EstadoCita.PROGRAMADA;

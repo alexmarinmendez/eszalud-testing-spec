@@ -1,8 +1,8 @@
 package pe.saludpublica.model;
 
 public class Especialidad {
-    private String nombre;
-    private String descripcion;
+    private final String nombre;
+    private final String descripcion;
 
     public Especialidad(String nombre, String descripcion) {
         this.nombre = validateRequiredText(nombre,"El nombre de la especialidad es obligatorio");
@@ -10,7 +10,7 @@ public class Especialidad {
     }
 
     private String validateRequiredText(String value, String alertMenssage) {
-        if (value == null ) {
+        if (value == null || value.isBlank() ) {
             throw new IllegalArgumentException(alertMenssage);
         }
         return value.trim();
