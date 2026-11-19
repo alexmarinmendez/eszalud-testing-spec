@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @DisplayName("Pruebas del modelo Paciente")
@@ -178,5 +179,35 @@ class PacienteTest {
                         "ana.mail.com"
                 )
         );
+    }
+
+    // PAC-011 (recomendada, regla documentada en DECISIONES.md)
+    @Test
+    @DisplayName("Aceptar un teléfono con formato libre porque no existe una regla de formato")
+    void shouldAcceptPhoneWithAnyFormatWhenNoFormatRuleExists() {
+        Paciente paciente = new Paciente(
+                "12345678",
+                "Ana",
+                "Pérez",
+                "+51 (01) 555-1234",
+                "ana@mail.com"
+        );
+
+        assertEquals("+51 (01) 555-1234", paciente.getTelefono());
+    }
+
+    // PAC-012 (recomendada, regla documentada en DECISIONES.md)
+    @Test
+    @DisplayName("Aceptar un paciente sin correo porque el correo es opcional")
+    void shouldAcceptPatientWithoutEmailWhenEmailIsOptional() {
+        Paciente paciente = new Paciente(
+                "12345678",
+                "Ana",
+                "Pérez",
+                "987654321",
+                null
+        );
+
+        assertNull(paciente.getCorreo());
     }
 }
