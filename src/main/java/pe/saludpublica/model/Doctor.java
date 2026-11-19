@@ -9,7 +9,11 @@ public class Doctor {
     private String especialidadId;
 
     public Doctor(String documento, String nombres, String apellidos, String colegiatura, String especialidadId) {
-
+        this.documento = documento;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.colegiatura = colegiatura;
+        this.especialidadId = especialidadId;
     }
 
     public String getDocumento() {
