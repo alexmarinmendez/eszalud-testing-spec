@@ -65,4 +65,19 @@ public class CitaMedicaTest {
             );
         });
     }
+
+    @Test
+    @DisplayName("Rechazar cita médica sin fecha y hora")
+    void shouldThrowExceptionWhenDateTimeIsNull() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new CitaMedica(
+                    "PAC001",
+                    "DOC001",
+                    "ESP001",
+                    null,
+                    "Dolor de cabeza",
+                    "PROGRAMADA"
+            );
+        });
+    }
 }
