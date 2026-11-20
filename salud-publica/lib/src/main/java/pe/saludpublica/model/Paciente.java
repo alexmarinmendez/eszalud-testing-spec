@@ -10,7 +10,12 @@ public class Paciente {
 
     public Paciente(String documento, String nombres,
                     String apellidos, String telefono, String correo) {
-        // Implementación pendiente: fase GREEN.
+
+        this.documento = documento;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.telefono = telefono;
+        this.correo = correo;
     }
 
     public String getDocumento() {
