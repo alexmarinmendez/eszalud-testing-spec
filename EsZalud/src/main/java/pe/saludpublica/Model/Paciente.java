@@ -15,6 +15,12 @@ public class Paciente {
             String telefono,
             String correo) {
 
+        if (documento == null) {
+            throw new IllegalArgumentException(
+                    "El documento no puede ser null"
+            );
+        }
+
         this.documento = documento;
         this.nombres = nombres;
         this.apellidos = apellidos;
