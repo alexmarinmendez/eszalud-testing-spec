@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PacienteTest {
 
-    // PAC-001
+    // PAC-001: Crear paciente válido
     @Test
     @DisplayName("Crear paciente con datos válidos")
     void shouldCreatePatientWithValidData() {
@@ -31,7 +31,7 @@ class PacienteTest {
         );
     }
 
-    // PAC-002
+    // PAC-002: Rechazar documento null
     @Test
     @DisplayName("Rechazar paciente sin documento")
     void shouldRejectPatientWithoutDocument() {
@@ -39,16 +39,13 @@ class PacienteTest {
         assertThrows(
                 IllegalArgumentException.class,
                 () -> new Paciente(
-                        null,
-                        "Ana",
-                        "Pérez",
-                        "987654321",
-                        "ana@mail.com"
+                        null, "Ana", "Pérez",
+                        "987654321", "ana@mail.com"
                 )
         );
     }
 
-    // PAC-003
+    // PAC-003: Rechazar nombres null
     @Test
     @DisplayName("Rechazar paciente sin nombres")
     void shouldRejectPatientWithoutFirstName() {
@@ -56,9 +53,23 @@ class PacienteTest {
         assertThrows(
                 IllegalArgumentException.class,
                 () -> new Paciente(
+                        "12345678", null, "Pérez",
+                        "987654321", "ana@mail.com"
+                )
+        );
+    }
+
+    // PAC-004: Rechazar apellidos null
+    @Test
+    @DisplayName("Rechazar paciente sin apellidos")
+    void shouldRejectPatientWithoutLastName() {
+
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new Paciente(
                         "12345678",
+                        "Ana",
                         null,
-                        "Pérez",
                         "987654321",
                         "ana@mail.com"
                 )
