@@ -31,4 +31,32 @@ class DoctorTest {
         assertEquals("CMP98765", doctor.getColegiatura());
         assertEquals("esp002", doctor.getEspecialidad());
     }
+
+    @Test
+    @DisplayName("Rechazar la creación de un doctor sin documento")
+    void shouldRejectDoctorWithoutDocument() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Doctor(null, "Luis", "Gómez", "CMP12345", "esp001"));
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de un doctor sin nombres")
+    void shouldRejectDoctorWithoutFirstName() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Doctor("12345678", null, "Gómez", "CMP12345", "esp001"));
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de un doctor sin apellidos")
+    void shouldRejectDoctorWithoutLastName() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Doctor("12345678", "Luis", null, "CMP12345", "esp001"));
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de un doctor sin colegiatura")
+    void shouldRejectDoctorWithoutLicense() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Doctor("12345678", "Luis", "Gómez", null, "esp001"));
+    }
 }
