@@ -21,7 +21,7 @@ public class CitaMedica {
         }
         this.fechaHora = fechaHora;
         this.motivo = requireText(motivo, "El motivo es obligatorio");
-        this.estado = estado;
+        this.estado = estado == null ? EstadoCita.PROGRAMADA : estado;
     }
 
     private static String requireText(String value, String message) {
