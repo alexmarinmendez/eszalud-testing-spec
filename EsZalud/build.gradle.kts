@@ -1,0 +1,27 @@
+plugins {
+    id("java")
+}
+
+group = "org.example"
+version = "1.0-SNAPSHOT"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // JUnit 6
+    testImplementation(platform("org.junit:junit-bom:6.0.0"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+
+    // Mockito
+    testImplementation("org.mockito:mockito-core:5.24.0")
+    testImplementation("org.mockito:mockito-junit-jupiter:5.24.0")
+
+    // JUnit Platform
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+}
+
+tasks.test {
+    useJUnitPlatform()
+}
